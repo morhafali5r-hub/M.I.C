@@ -38,8 +38,8 @@ html[dir="ltr"] .header-actions { left: auto; right: 0; }
 .top-btn { background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); padding: 5px 15px; font-family: var(--font-mono); cursor: pointer; transition: 0.3s; font-size: 1rem; }
 .top-btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 10px var(--neon-cyan); }
 
-.sys-title { font-family: 'Sayaf-Heavy', sans-serif; font-size: 4rem; color: var(--text-main); text-shadow: 0 0 20px var(--neon-cyan); letter-spacing: 5px; margin-bottom: 10px; text-transform: uppercase; }
-.sys-sub { font-size: 1.5rem; color: var(--neon-cyan); letter-spacing: 1px; font-family: 'Methlama-Regular', sans-serif; }
+.sys-title { font-family: 'Sayaf-Heavy', sans-serif; font-size: clamp(2.5rem, 6vw, 4rem); color: var(--text-main); text-shadow: 0 0 20px var(--neon-cyan); letter-spacing: 5px; margin-bottom: 10px; text-transform: uppercase; line-height: 1.2; }
+.sys-sub { font-size: clamp(1rem, 3vw, 1.5rem); color: var(--neon-cyan); letter-spacing: 1px; font-family: 'Methlama-Regular', sans-serif; }
 
 /* Navigation */
 .sys-nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 50px; flex-wrap: wrap; }
@@ -55,7 +55,6 @@ html[dir="ltr"] .header-actions { left: auto; right: 0; }
 @keyframes glitchReveal { 0% { opacity: 0; transform: translate(-20px, 20px) scale(0.98); filter: blur(10px); } 100% { opacity: 1; transform: translate(0) scale(1); filter: blur(0); } }
 .dual-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
 .single-grid { grid-template-columns: 1fr; max-width: 1000px; margin: 0 auto; }
-@media(max-width: 1024px) { .dual-grid { grid-template-columns: 1fr; } }
 
 /* 3D PARALLAX PANELS */
 .cyber-panel { 
@@ -73,7 +72,7 @@ html[dir="rtl"] .cyber-panel::after { right: auto; left: 0; border-right: none; 
 
 .panel-glare { position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15), transparent 50%); opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 10; mix-blend-mode: screen; transform: translateZ(1px); }
 
-.panel-title { font-family: 'Sayaf-Heavy', sans-serif; font-size: 2.8rem; color: var(--neon-cyan); margin-bottom: 30px; border-bottom: 1px dashed var(--text-muted); padding-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-end; transform: translateZ(30px); letter-spacing: 2px; }
+.panel-title { font-family: 'Sayaf-Heavy', sans-serif; font-size: clamp(2rem, 4vw, 2.8rem); color: var(--neon-cyan); margin-bottom: 30px; border-bottom: 1px dashed var(--text-muted); padding-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-end; transform: translateZ(30px); letter-spacing: 2px; }
 .panel-title span { font-size: 1rem; color: var(--text-muted); font-family: var(--font-mono); letter-spacing: 1px; }
 
 /* Forms & Dropzones */
@@ -111,13 +110,13 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 /* Buttons */
 .btn { width: 100%; background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); padding: 18px; font-family: 'Methlama-Regular', sans-serif; font-size: 1.4rem; letter-spacing: 1px; cursor: pointer; margin-top: 30px; transition: 0.3s; clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px); transform: translateZ(25px); text-transform: uppercase; }
 .btn:hover:not(:disabled) { background: var(--neon-cyan); color: #000; box-shadow: 0 0 30px rgba(0, 243, 255, 0.6); font-weight: bold; }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; border-color: var(--text-muted); color: var(--text-muted); box-shadow: none; }
 .btn.danger { border-color: var(--neon-red); color: var(--neon-red); }
-.btn.danger:hover { background: var(--neon-red); color: #000; box-shadow: 0 0 30px rgba(255, 0, 60, 0.6); }
+.btn.danger:hover:not(:disabled) { background: var(--neon-red); color: #000; box-shadow: 0 0 30px rgba(255, 0, 60, 0.6); }
 .btn.success { border-color: var(--neon-green); color: var(--neon-green); }
-.btn.success:hover { background: var(--neon-green); color: #000; box-shadow: 0 0 30px rgba(0, 255, 102, 0.6); }
+.btn.success:hover:not(:disabled) { background: var(--neon-green); color: #000; box-shadow: 0 0 30px rgba(0, 255, 102, 0.6); }
 .btn.small { width: auto; padding: 12px 30px; font-size: 1.2rem; margin-top: 20px; }
 .action-group { display: flex; gap: 20px; margin-top: 30px; transform: translateZ(25px); }
-@media(max-width: 768px) { .action-group { flex-direction: column; gap: 10px; } .action-group .btn { margin-top: 0; } }
 
 /* Terminals & Results */
 .terminal-box { margin-top: 20px; background: rgba(0,0,0,0.9); border: 1px solid var(--text-muted); padding: 25px; font-family: 'Gali', sans-serif; font-size: 1.4rem; color: var(--neon-green); min-height: 140px; word-break: break-word; white-space: pre-wrap; line-height: 1.8; transition: all 0.5s; transform: translateZ(15px); box-shadow: inset 0 0 20px rgba(0,255,102,0.05); }
@@ -137,20 +136,27 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 /* Overlays (Unified Fullscreen Blurs) */
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 8000; display: flex; justify-content: center; align-items: center; flex-direction: column; opacity: 0; pointer-events: none; transition: 0.3s; backdrop-filter: blur(15px); }
 .modal-overlay.active { opacity: 1; pointer-events: all; }
-.modal-content { background: var(--bg-core); border: 2px solid var(--neon-cyan); width: 100%; max-width: 550px; padding: 50px; box-shadow: 0 0 50px rgba(0, 243, 255, 0.15); transform: translateY(50px); transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; max-height: 90vh; overflow-y: auto; }
+.modal-content { background: var(--bg-core); border: 2px solid var(--neon-cyan); width: 90%; max-width: 550px; padding: 50px; box-shadow: 0 0 50px rgba(0, 243, 255, 0.15); transform: translateY(50px); transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; max-height: 90vh; overflow-y: auto; }
 .modal-overlay.active .modal-content { transform: translateY(0); }
 .modal-close { position: absolute; top: 15px; left: 20px; background: none; border: none; color: var(--text-muted); font-size: 2.5rem; cursor: pointer; transition: 0.3s; font-family: var(--font-mono); }
 html[dir="ltr"] .modal-close { left: auto; right: 20px; }
 .modal-close:hover { color: var(--neon-red); transform: scale(1.1); }
-.modal-title { font-family: 'Sayaf-Heavy', sans-serif; font-size: 2.5rem; color: var(--neon-cyan); margin-bottom: 30px; border-bottom: 1px dashed var(--text-muted); padding-bottom: 20px; text-align: center; }
+.modal-title { font-family: 'Sayaf-Heavy', sans-serif; font-size: clamp(1.8rem, 5vw, 2.5rem); color: var(--neon-cyan); margin-bottom: 30px; border-bottom: 1px dashed var(--text-muted); padding-bottom: 20px; text-align: center; }
+
+/* Locked Extension Input Group */
+.dl-input-group { display: flex; align-items: stretch; background: rgba(0,0,0,0.8); border: 1px solid var(--text-muted); transition: 0.3s; }
+.dl-input-group:focus-within { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 243, 255, 0.2); }
+.dl-input-group input { border: none; background: transparent; flex: 1; box-shadow: none; margin: 0; padding: 15px; }
+.dl-input-group .ext-label { display: flex; align-items: center; padding: 0 15px; color: var(--neon-purple); font-family: var(--font-mono); font-weight: bold; font-size: 1.2rem; border-right: 1px solid var(--text-muted); direction: ltr; }
+html[dir="ltr"] .dl-input-group .ext-label { border-right: none; border-left: 1px solid var(--text-muted); }
 
 /* System Status Text Overlay */
-.overlay-text { font-family: 'Sayaf-Heavy', sans-serif; font-size: 4rem; color: var(--neon-cyan); text-shadow: 0 0 40px var(--neon-cyan); letter-spacing: 2px; animation: pulseText 1.2s infinite alternate; text-align: center; }
+.overlay-text { font-family: 'Sayaf-Heavy', sans-serif; font-size: clamp(2.5rem, 8vw, 4rem); color: var(--neon-cyan); text-shadow: 0 0 40px var(--neon-cyan); letter-spacing: 2px; animation: pulseText 1.2s infinite alternate; text-align: center; padding: 0 20px; }
 @keyframes pulseText { 0% { opacity: 0.4; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1.05); } }
 
 /* Progress Blur Overlay (For Upload/Download) */
 #progressOverlay .modal-content { border-color: var(--neon-purple); background: transparent; border: none; box-shadow: none; max-width: 800px; text-align: center; padding: 20px; }
-.prog-stats { display: flex; justify-content: space-between; align-items: flex-end; font-family: var(--font-mono); font-size: 1.5rem; color: var(--neon-purple); margin-bottom: 15px; margin-top: 30px; }
+.prog-stats { display: flex; justify-content: space-between; align-items: flex-end; font-family: var(--font-mono); font-size: clamp(1rem, 4vw, 1.5rem); color: var(--neon-purple); margin-bottom: 15px; margin-top: 30px; }
 .prog-track { height: 12px; background: rgba(176, 38, 255, 0.1); border-radius: 6px; overflow: hidden; width: 100%; margin-top: 20px; }
 .prog-fill { height: 100%; width: 0%; background: var(--neon-purple); box-shadow: 0 0 30px var(--neon-purple); transition: width 0.3s ease; }
 
@@ -169,6 +175,22 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
 .toast.error { border-color: var(--neon-red); color: var(--neon-red); }
 .toast.success { border-color: var(--neon-green); color: var(--neon-green); }
 .toast.burn { border-color: var(--neon-red); color: #fff; background: rgba(255,0,0,0.25); }
+
+/* ==== Responsive Mobile Adjustments ==== */
+@media (max-width: 768px) {
+    .dual-grid { grid-template-columns: 1fr; gap: 30px; }
+    .wrap { padding: 20px 15px 80px; }
+    header { margin-bottom: 30px; }
+    .cyber-panel { padding: 25px 20px; clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px)); }
+    .action-group { flex-direction: column; gap: 15px; }
+    .btn { margin-top: 15px; padding: 15px; }
+    .modal-content { padding: 30px 20px; }
+    #toast-container { right: 20px; bottom: 20px; left: 20px; }
+    html[dir="ltr"] #toast-container { left: 20px; right: 20px; }
+    .toast { transform: translateY(50px); text-align: center; }
+    html[dir="ltr"] .toast { transform: translateY(50px); }
+    .toast.show { transform: translateY(0); }
+}
 </style>
 </head>
 <body dir="rtl">
@@ -191,9 +213,9 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
 <!-- Pure Blur Overlay for Upload Progress -->
 <div id="progressOverlay" class="modal-overlay">
   <div class="modal-content">
-      <div class="overlay-text" id="progOverlayTitle" style="font-size: 3rem; margin-bottom: 20px;">جاري نقل البيانات للشبكة...</div>
-      <div style="font-family: var(--font-mono); font-size: 4rem; color: var(--neon-purple); font-weight: bold; text-shadow: 0 0 20px var(--neon-purple); margin-bottom: 10px;" id="progOverlayPct">0%</div>
-      <div style="font-family: var(--font-mono); font-size: 1.5rem; color: var(--text-main);" id="progOverlayMb">0.00 / 0.00 MB</div>
+      <div class="overlay-text" id="progOverlayTitle" style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 20px;">جاري نقل البيانات للشبكة...</div>
+      <div style="font-family: var(--font-mono); font-size: clamp(3rem, 8vw, 4rem); color: var(--neon-purple); font-weight: bold; text-shadow: 0 0 20px var(--neon-purple); margin-bottom: 10px;" id="progOverlayPct">0%</div>
+      <div style="font-family: var(--font-mono); font-size: clamp(1rem, 4vw, 1.5rem); color: var(--text-main);" id="progOverlayMb">0.00 / 0.00 MB</div>
       <div class="prog-track"><div class="prog-fill" id="progOverlayFill"></div></div>
   </div>
 </div>
@@ -207,13 +229,14 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
   <div class="modal-content">
     <button class="modal-close" data-close="modalOverlay">×</button>
     <h3 class="modal-title lang-txt" data-ar="إعدادات الحفظ والإخراج" data-en="OUTPUT EXPORT SETTINGS">إعدادات الحفظ والإخراج</h3>
-    <label class="lang-txt" data-ar="اسم الملف (بدون صيغة)" data-en="Filename (Without Extension)">اسم الملف (بدون صيغة)</label>
-    <input type="text" id="dlFileName" value="STEALTH_ARTIFACT">
-    <div id="dlFormatWrapper">
-      <label class="lang-txt" data-ar="صيغة الإخراج (يفضل PNG حصراً لعدم ضياع التشفير)" data-en="Output Format (PNG Highly Recommended)">صيغة الإخراج (يفضل PNG حصراً لعدم ضياع التشفير)</label>
-      <select id="dlFormat"><option value="image/png">PNG (Lossless)</option><option value="image/webp">WEBP</option></select>
+    
+    <label class="lang-txt" data-ar="اسم الملف (الامتداد مقفول أمنياً)" data-en="Filename (Extension is Security Locked)">اسم الملف (الامتداد مقفول أمنياً)</label>
+    <div class="dl-input-group">
+        <input type="text" id="dlFileName" value="STEALTH_ARTIFACT">
+        <span class="ext-label" id="dlExtLabel">.png</span>
     </div>
-    <button class="btn success lang-txt" id="modalConfirmDlBtn" data-ar="اختيار مسار الحفظ (SAVE)" data-en="SELECT SAVE LOCATION">اختيار مسار الحفظ (SAVE)</button>
+    
+    <button class="btn success lang-txt" id="modalConfirmDlBtn" data-ar="تأكيد وحفظ الملف (SAVE)" data-en="CONFIRM & SAVE FILE">تأكيد وحفظ الملف (SAVE)</button>
   </div>
 </div>
 
@@ -241,7 +264,7 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
             <h4 style="color: var(--neon-red);">[SYS_04]: الإتلاف الجذري للمصفوفات</h4>
             <p>نظام تحكم كامل في بنية الملفات الفيزيائية عبر التلاعب بالبايتات:</p>
             <ul>
-                <li><span style="color: var(--neon-cyan);">إتلاف (CORRUPT):</span> تمزيق وتشفير بنية الملف ليصبح غير قابل للتشغيل، لا يمكن استعادته إلا بنفس كلمة السر.</li>
+                <li><span style="color: var(--neon-cyan);">إتلاف (CORRUPT):</span> تمزيق وتشفير بنية الملف ليصبح غير قابل للتشغيل، لا يمكن استعادته إلا بنفس كلمة السر أو مفتاح الأمان المرفق.</li>
                 <li><span style="color: var(--neon-green);">استرجاع (RESTORE):</span> فك التشفير عن الملف المتلف مسبقاً لإعادته إلى حالته الطبيعية والعمل بكفاءة.</li>
             </ul>
         </div>
@@ -265,7 +288,7 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
             <h4 style="color: var(--neon-red);">[SYS_04]: ABSOLUTE KILL MATRIX</h4>
             <p>Total physical byte control using Matrix manipulations:</p>
             <ul>
-                <li><span style="color: var(--neon-cyan);">CORRUPT:</span> Scrambles file bytes physically. Can only be restored with the exact password key.</li>
+                <li><span style="color: var(--neon-cyan);">CORRUPT:</span> Scrambles file bytes physically. Can only be restored with the exact password or physical key.</li>
                 <li><span style="color: var(--neon-green);">RESTORE:</span> Unlocks a previously corrupted file back to its fully working original state.</li>
             </ul>
         </div>
@@ -332,7 +355,7 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
       <div id="decryptResultsWrapper">
         <label class="lang-txt" data-ar="البيانات المستخرجة" data-en="EXTRACTED_DATA">البيانات المستخرجة</label>
         <div class="terminal-box empty lang-txt" id="decResult" data-ar="_لا يوجد نص سري_" data-en="_WAITING_FOR_DATA_">_لا يوجد نص سري_</div>
-        <div class="dl-box" id="decFileBox"><span class="dl-info" id="decFileInfo">FILE.EXT</span><button class="btn success small lang-txt" id="decFileDlBtn" data-ar="تحميل مباشر للملف" data-en="DIRECT DOWNLOAD">تحميل مباشر للملف</button></div>
+        <div class="dl-box" id="decFileBox"><span class="dl-info" id="decFileInfo">FILE.EXT</span><button class="btn success small lang-txt" id="decFileDlBtn" data-ar="تأمين الاتصال والتحميل المباشر" data-en="SECURE CONNECTION & DOWNLOAD">تأمين الاتصال والتحميل المباشر</button></div>
         <img id="dossierPreviewImg" class="dossier-preview" alt="Dossier">
         <button class="btn small lang-txt" id="dlDossierBtn" style="display:none; margin-top:15px; width:100%;" data-ar="تحميل بطاقة الاستخبارات (WANTED)" data-en="DOWNLOAD DOSSIER">تحميل بطاقة الاستخبارات (WANTED)</button>
         <button class="btn danger small lang-txt" id="burnProtocolBtn" style="display:none; margin-top:15px; width:100%;" data-ar="تدمير البيانات (Burn Protocol)" data-en="INITIATE BURN PROTOCOL">تدمير البيانات (Burn Protocol)</button>
@@ -380,7 +403,7 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
       <div id="audDecryptResultsWrapper">
         <label class="lang-txt" data-ar="البيانات المستخرجة" data-en="EXTRACTED_DATA">البيانات المستخرجة</label>
         <div class="terminal-box empty lang-txt" id="audDecResult" data-ar="_لا يوجد نص سري_" data-en="_WAITING_FOR_DATA_">_لا يوجد نص سري_</div>
-        <div class="dl-box" id="audDecFileBox"><span class="dl-info" id="audDecFileInfo">FILE.EXT</span><button class="btn success small lang-txt" id="audDecFileDlBtn" data-ar="تحميل مباشر للملف" data-en="DIRECT DOWNLOAD">تحميل مباشر للملف</button></div>
+        <div class="dl-box" id="audDecFileBox"><span class="dl-info" id="audDecFileInfo">FILE.EXT</span><button class="btn success small lang-txt" id="audDecFileDlBtn" data-ar="تأمين الاتصال والتحميل المباشر" data-en="SECURE CONNECTION & DOWNLOAD">تأمين الاتصال والتحميل المباشر</button></div>
         <img id="audDossierPreviewImg" class="dossier-preview" alt="Dossier">
         <button class="btn small lang-txt" id="audDlDossierBtn" style="display:none; margin-top:15px; width:100%;" data-ar="تحميل بطاقة الاستخبارات (WANTED)" data-en="DOWNLOAD DOSSIER">تحميل بطاقة الاستخبارات (WANTED)</button>
         <button class="btn danger small lang-txt" id="audBurnProtocolBtn" style="display:none; margin-top:15px; width:100%;" data-ar="تدمير البيانات (Burn Protocol)" data-en="INITIATE BURN PROTOCOL">تدمير البيانات (Burn Protocol)</button>
@@ -414,7 +437,7 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
       
       <div class="action-group" id="morseAudioGroup" style="display:none; margin-top:20px;">
         <button class="btn success small lang-txt" id="morsePlayBtn" data-ar="معاينة الشفرة صوتياً (PREVIEW)" data-en="PREVIEW SIGNAL (PLAY)">معاينة الشفرة صوتياً (PREVIEW)</button>
-        <button class="btn small lang-txt" id="morseExportBtn" data-ar="تحميل كملف WAV" data-en="EXPORT TO WAV">تحميل كملف WAV</button>
+        <button class="btn small lang-txt" id="morseExportBtn" data-ar="تأكيد حفظ الشفرة كملف WAV" data-en="EXPORT SIGNAL TO WAV">تأكيد حفظ الشفرة كملف WAV</button>
       </div>
       
       <hr style="border:0; border-bottom:1px dashed var(--text-muted); margin: 30px 0;">
@@ -428,26 +451,21 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
   <main id="corruptSys" class="system-view single-grid">
     <div class="cyber-panel">
       <div class="panel-glare"></div>
-      <div class="panel-title"><span class="lang-txt" data-ar="إتلاف واسترجاع المصفوفات" data-en="XOR_MATRIX">إتلاف واسترجاع المصفوفات</span> <span>[CORRUPT/RESTORE]</span></div>
-      <p class="lang-txt" style="color:var(--text-muted); font-size:1.1rem; margin-bottom:25px; text-align:center;" data-ar="معالجة تدميرية على مستوى البايت. الملف سيتلف تماماً ويصبح غير قابل للقراءة، ولن يعود لحالته الأصلية إلا بنفس مفتاح التشفير." data-en="Byte-level destructive manipulation. Renders file unreadable. Reversible exclusively with identical key.">معالجة تدميرية على مستوى البايت. الملف سيتلف تماماً ويصبح غير قابل للقراءة، ولن يعود لحالته الأصلية إلا بنفس مفتاح التشفير.</p>
-
+      <div class="panel-title"><span class="lang-txt" data-ar="الإتلاف الجذري للمصفوفات" data-en="ABSOLUTE KILL MATRIX">الإتلاف الجذري للمصفوفات</span> <span>[CORRUPT/RESTORE]</span></div>
+      <p class="lang-txt" style="color:var(--text-muted); font-size:1.1rem; margin-bottom:20px; text-align:center;" data-ar="إتلاف: قفل الملف برمز. استرجاع: فك القفل بالرمز." data-en="Corrupt: Lock with key. Restore: Unlock.">إتلاف: قفل الملف برمز. استرجاع: فك القفل بالرمز.</p>
+      
       <label class="lang-txt" data-ar="الملف المستهدف [أي صيغة]" data-en="TARGET_ARTIFACT [ANY_FORMAT]">الملف المستهدف [أي صيغة]</label>
-      <div class="dropzone" id="corrDropzone">
-        <input type="file" id="corrFileInput">
-        <div class="dz-icon">☠️</div>
-        <div class="dz-text lang-txt" data-ar="اسحب الملف للمعالجة" data-en="Drop File for Destructive Processing">اسحب الملف للمعالجة</div>
-        <div class="dz-filename" id="corrFileName"></div>
-      </div>
+      <div class="dropzone" id="corrDropzone" style="margin-bottom: 30px;"><input type="file" id="corrFileInput"><div class="dz-icon">☠️</div><div class="dz-text lang-txt" data-ar="اسحب الملف هنا" data-en="Drop File Here">اسحب الملف هنا</div><div class="dz-filename" id="corrFileName"></div></div>
 
-      <label class="lang-txt" data-ar="مفتاح التشفير الجذري" data-en="CRYPTOGRAPHIC_KEY">مفتاح التشفير الجذري</label>
-      <div class="pass-wrap">
-        <input type="password" id="corrPassword" class="password-field" placeholder="••••••••">
-        <button type="button" class="toggle-pass" data-target="corrPassword">👁</button>
+      <label class="lang-txt" data-ar="مفتاح التشفير الجذري [نص / ملف]" data-en="CRYPTOGRAPHIC_KEY [TEXT / FILE]">مفتاح التشفير الجذري [نص / ملف]</label>
+      <div class="crypto-key-group">
+        <div class="pass-wrap"><input type="password" id="corrPassword" class="password-field" placeholder="••••••••"><button type="button" class="toggle-pass" data-target="corrPassword">👁</button></div>
+        <div class="file-key-btn" id="corrFileKeyBtn" title="Upload Physical Key File">🗝️<input type="file" id="corrFileKeyInput"></div>
       </div>
 
       <div class="action-group">
-        <button class="btn danger lang-txt" id="corruptActionBtn" data-ar="إتلاف الملف (CORRUPT)" data-en="CORRUPT_MATRIX">إتلاف الملف (CORRUPT)</button>
-        <button class="btn success lang-txt" id="restoreActionBtn" data-ar="استرجاع الملف (RESTORE)" data-en="RESTORE_MATRIX">استرجاع الملف (RESTORE)</button>
+        <button class="btn success lang-txt" id="restoreActionBtn" data-ar="استرجاع الملف (RESTORE)" data-en="RESTORE MATRIX">استرجاع الملف (RESTORE)</button>
+        <button class="btn danger lang-txt" id="corruptActionBtn" data-ar="إتلاف الملف (CORRUPT)" data-en="CORRUPT MATRIX">إتلاف الملف (CORRUPT)</button>
       </div>
     </div>
   </main>
@@ -460,6 +478,15 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxQtDThKLQ704BaG1ogUB2m2zh5PPfDxKns8UITXOGACgnyTbnlhnHdJyTOOaAsAvn4/exec"; 
   const WORKER_URL = "https://lingering-flower-db63.morhaf-ali-5r.workers.dev/"; 
 
+  /* ============ SAFETY PREVENT TAB CLOSE ============ */
+  let isSystemUploading = false;
+  window.addEventListener('beforeunload', function (e) {
+      if (isSystemUploading) {
+          e.preventDefault();
+          e.returnValue = ''; // Required for Chrome to show the warning dialog
+      }
+  });
+
   /* ============ DYNAMIC SPATIAL AUDIO & VFX ENGINE ============ */
   const AudioEngine = (function() {
     let ctx = null, droneOsc = null, droneGain = null, lpf = null, dist = null, crackle = null, isPlaying = false;
@@ -467,15 +494,15 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
     
     function setupAmbient() {
         droneOsc = ctx.createOscillator(); droneOsc.type = 'triangle'; droneOsc.frequency.value = 65.41; 
-        droneGain = ctx.createGain(); droneGain.gain.value = 0.015;
+        droneGain = ctx.createGain(); droneGain.gain.value = 0.05; // BOOSTED DRONE VOLUME
         lpf = ctx.createBiquadFilter(); lpf.type = 'lowpass'; lpf.frequency.value = 400;
         dist = ctx.createWaveShaper(); dist.curve = makeDistortionCurve(0);
         
         const bufferSize = ctx.sampleRate * 2; const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
         const data = buffer.getChannelData(0);
-        for(let i=0; i<bufferSize; i++) { data[i] = Math.random() > 0.999 ? (Math.random()*2-1)*0.3 : (Math.random()*2-1)*0.008; }
+        for(let i=0; i<bufferSize; i++) { data[i] = Math.random() > 0.999 ? (Math.random()*2-1)*0.6 : (Math.random()*2-1)*0.015; }
         crackle = ctx.createBufferSource(); crackle.buffer = buffer; crackle.loop = true;
-        const crackleGain = ctx.createGain(); crackleGain.gain.value = 0.05;
+        const crackleGain = ctx.createGain(); crackleGain.gain.value = 0.15; // BOOSTED CRACKLE VOLUME
 
         droneOsc.connect(dist); dist.connect(lpf); lpf.connect(droneGain); droneGain.connect(ctx.destination);
         crackle.connect(crackleGain); crackleGain.connect(ctx.destination);
@@ -595,17 +622,17 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
   const textEncoder = new TextEncoder(); const textDecoder = new TextDecoder('utf-8', { fatal: true });
   const state = { 
       lang: 'ar', 
-      keys: { enc:null, dec:null, audEnc:null, audDec:null }, 
+      keys: { enc:null, dec:null, corr:null, audEnc:null, audDec:null }, 
       payloadCache: {}, 
       modalAction: null, 
       modalDataBlob: null, 
       modalExt: '',
-      corruptFile: { file: null, buffer: null, name: '' } // EXACT state variable from MIC.html
+      corruptFile: { file: null, buffer: null, name: '' } 
   };
   
   const msgs = {
-    ar: { success: '✅ تمت العملية بنجاح', error: '⚠️ خطأ: ', noImg: 'الملف مطلوب', noKey: 'المفتاح مطلوب', errUpload: 'فشل الرفع للشبكة', errDec: 'فشل الفك / المفتاح خاطئ', noFile: 'الملف مطلوب', noPwd: 'كلمة السر مطلوبة', burn: 'تم مسح البيانات نهائياً' },
-    en: { success: '✅ SUCCESSFUL', error: '⚠️ ERROR: ', noImg: 'File required', noKey: 'Key required', errUpload: 'Upload failed', errDec: 'Decryption Failed / Wrong Key', noFile: 'File required', noPwd: 'Password required', burn: 'DATA PURGED' }
+    ar: { success: '✅ تمت العملية بنجاح', error: '⚠️ خطأ: ', noImg: 'الملف مطلوب', noKey: 'المفتاح مطلوب', errUpload: 'فشل الرفع للشبكة', errDec: 'فشل الفك / المفتاح خاطئ', noFile: 'الملف مطلوب', noPwd: 'كلمة السر أو مفتاح الأمان مطلوب', burn: 'تم مسح البيانات نهائياً' },
+    en: { success: '✅ SUCCESSFUL', error: '⚠️ ERROR: ', noImg: 'File required', noKey: 'Key required', errUpload: 'Upload failed', errDec: 'Decryption Failed / Wrong Key', noFile: 'File required', noPwd: 'Password or Security Key required', burn: 'DATA PURGED' }
   };
 
   function toast(keyMsg, type='info', isDirect=false) {
@@ -620,7 +647,7 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
   function showOverlay(arText, enText) { document.getElementById('overlayText').textContent = state.lang==='ar' ? arText : enText; document.getElementById('sysOverlay').classList.add('active'); AudioEngine.scan(); }
   function hideOverlay() { document.getElementById('sysOverlay').classList.remove('active'); }
 
-  // Modals & Routing
+  // Modals & Routing + LocalStorage Persistence
   document.getElementById('infoBtn').addEventListener('click', () => { 
       AudioEngine.beep(); document.getElementById('infoModalOverlay').classList.add('active'); 
       document.getElementById('infoAr').style.display = state.lang === 'ar' ? 'block' : 'none';
@@ -629,14 +656,30 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
   document.querySelectorAll('.modal-close').forEach(btn => { btn.addEventListener('click', () => { AudioEngine.beep(); document.getElementById(btn.dataset.close).classList.remove('active'); }); });
 
   document.getElementById('langBtn').addEventListener('click', function() { 
-      AudioEngine.beep(); state.lang = state.lang === 'ar' ? 'en' : 'ar'; document.documentElement.dir = state.lang === 'ar' ? 'rtl' : 'ltr'; this.textContent = state.lang === 'ar' ? 'EN' : 'AR'; 
+      AudioEngine.beep(); state.lang = state.lang === 'ar' ? 'en' : 'ar'; 
+      localStorage.setItem('stealth_lang', state.lang); // Save Lang
+      document.documentElement.dir = state.lang === 'ar' ? 'rtl' : 'ltr'; this.textContent = state.lang === 'ar' ? 'EN' : 'AR'; 
       document.querySelectorAll('.lang-txt').forEach(el => el.innerHTML = el.getAttribute(`data-${state.lang}`)); 
       document.querySelectorAll('.lang-ph').forEach(el => el.setAttribute('placeholder', el.getAttribute(`data-${state.lang}`))); 
       document.getElementById('infoAr').style.display = state.lang === 'ar' ? 'block' : 'none';
       document.getElementById('infoEn').style.display = state.lang === 'en' ? 'block' : 'none';
   });
   
-  document.querySelectorAll('.nav-btn').forEach(btn => { btn.addEventListener('click', () => { AudioEngine.beep(); document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active')); document.querySelectorAll('.system-view').forEach(p => p.classList.remove('active')); btn.classList.add('active'); document.getElementById(btn.dataset.target).classList.add('active'); }); });
+  // Load saved Lang
+  if(localStorage.getItem('stealth_lang') && localStorage.getItem('stealth_lang') !== state.lang) {
+      document.getElementById('langBtn').click();
+  }
+
+  document.querySelectorAll('.nav-btn').forEach(btn => { 
+      btn.addEventListener('click', () => { 
+          AudioEngine.beep(); 
+          document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active')); 
+          document.querySelectorAll('.system-view').forEach(p => p.classList.remove('active')); 
+          btn.classList.add('active'); 
+          document.getElementById(btn.dataset.target).classList.add('active'); 
+      }); 
+  });
+  
   document.querySelectorAll('.toggle-pass').forEach(btn => { btn.addEventListener('click', () => { AudioEngine.beep(); const t = document.getElementById(btn.dataset.target); if(t.type === 'password'){ t.type = 'text'; btn.textContent = '🙈'; } else { t.type = 'password'; btn.textContent = '👁'; } }); });
 
   function setupDropzone(id, inputId, onFile) { const z = document.getElementById(id), i = document.getElementById(inputId); z.addEventListener('click', () => { AudioEngine.beep(); i.click(); }); z.addEventListener('dragover', e => { e.preventDefault(); z.classList.add('drag'); }); z.addEventListener('dragleave', e => { e.preventDefault(); z.classList.remove('drag'); }); z.addEventListener('drop', e => { e.preventDefault(); z.classList.remove('drag'); if(e.dataTransfer.files.length) { AudioEngine.beep(); onFile(e.dataTransfer.files[0]); } }); i.addEventListener('change', e => { if(e.target.files.length) onFile(e.target.files[0]); i.value = ''; }); }
@@ -644,16 +687,43 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
   
   setupFileKey('encFileKeyBtn', 'encFileKeyInput', 'enc'); 
   setupFileKey('decFileKeyBtn', 'decFileKeyInput', 'dec'); 
+  setupFileKey('corrFileKeyBtn', 'corrFileKeyInput', 'corr');
   setupFileKey('audEncFileKeyBtn', 'audEncFileKeyInput', 'audEnc');
   setupFileKey('audDecFileKeyBtn', 'audDecFileKeyInput', 'audDec');
 
-  // Ultimate Key Generation 
-  async function generateUltimateKey(textPass, fileBuffer) {
-      if(!textPass && !fileBuffer) throw new Error("Missing Key Parameters");
-      let fk = new Uint8Array(32);
-      if(textPass) { const pb = textEncoder.encode(textPass); const h = await crypto.subtle.digest('SHA-256', pb); const ha = new Uint8Array(h); for(let i=0; i<32; i++) fk[i] = ha[i]; }
-      if(fileBuffer) { const h = await crypto.subtle.digest('SHA-256', fileBuffer); const ha = new Uint8Array(h); for(let i=0; i<32; i++) { if(textPass) fk[i] ^= ha[i]; else fk[i] = ha[i]; } }
-      return fk;
+  // SYNCHRONOUS ULTIMATE KEY GENERATION 
+  function generateUltimateKeySync(textPass, fileBuffer) {
+      if(!textPass && !fileBuffer) throw new Error("Missing Key");
+      
+      if(textPass && !fileBuffer) {
+          return textEncoder.encode(textPass); 
+      }
+      
+      let keyLen = textPass ? textEncoder.encode(textPass).length : 32;
+      keyLen = Math.max(keyLen, 32); 
+      let key = new Uint8Array(keyLen);
+      
+      if(textPass) {
+          const pb = textEncoder.encode(textPass);
+          for(let i=0; i<pb.length; i++) key[i] = pb[i];
+      }
+      
+      if(fileBuffer) {
+          const view = new Uint8Array(fileBuffer);
+          const step = Math.max(1, Math.floor(view.length / 4096)); 
+          let offset = 0;
+          for(let i=0; i<view.length; i+=step) {
+              key[offset % keyLen] ^= view[i];
+              key[(offset + 7) % keyLen] = (key[(offset + 7) % keyLen] + view[i]) % 256; 
+              offset++;
+          }
+      }
+      
+      let isZero = true;
+      for(let i=0; i<keyLen; i++) if(key[i] !== 0) isZero = false;
+      if(isZero) key.fill(170);
+      
+      return key;
   }
 
   function generateDossier(filename, filesizeMB) {
@@ -675,6 +745,7 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
   async function uploadToDrive(file) {
     if(state.payloadCache.file === file) return state.payloadCache.links;
     
+    isSystemUploading = true; // Lock Tab Closure
     const progBox = document.getElementById('progressOverlay');
     const title = document.getElementById('progOverlayTitle');
     const pct = document.getElementById('progOverlayPct');
@@ -686,7 +757,7 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
     const tMB = (file.size / (1024 * 1024)).toFixed(2); mb.textContent = `0.00 / ${tMB} MB`;
     
     try {
-        const auth = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'getUploadUrl', fileName: file.name, mimeType: file.type }) }).then(r=>r.json());
+        const auth = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'getUploadUrl', fileName: file.name, mimeType: file.type }), headers: { 'Content-Type': 'text/plain' } }).then(r=>r.json());
         if(!auth.uploadUrl) throw new Error("Auth Failed");
         let start = 0; let fileId = null; const chunk = 20*1024*1024;
         while(start < file.size) {
@@ -697,12 +768,30 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
                 x.onload = () => { if([200,201,308].includes(x.status)){ if(x.status!==308) fileId=JSON.parse(x.responseText).id; res(); } else rej(); }; x.onerror = rej; x.send(c);
             }); start = end;
         }
-        const links = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'getPublicLink', fileId: fileId }) }).then(r=>r.json());
-        progBox.classList.remove('active'); state.payloadCache = { file: file, links: {dlLink: links.downloadLink, viewLink: links.viewLink} }; return state.payloadCache.links;
-    } catch(err) { progBox.classList.remove('active'); throw err; }
+        const links = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'getPublicLink', fileId: fileId }), headers: { 'Content-Type': 'text/plain' } }).then(r=>r.json());
+        progBox.classList.remove('active'); isSystemUploading = false; state.payloadCache = { file: file, links: {dlLink: links.downloadLink, viewLink: links.viewLink} }; return state.payloadCache.links;
+    } catch(err) { progBox.classList.remove('active'); isSystemUploading = false; throw err; }
   }
 
   function forceInvisibleDownload(url) { let f = document.getElementById('hidDlFrame'); if(!f){ f = document.createElement('iframe'); f.id = 'hidDlFrame'; f.style.display = 'none'; document.body.appendChild(f); } f.src = url; }
+  
+  // Handlers for Rate-Limiting Downloads (Anti-Spam)
+  function secureDownloadAction(btnElement, fileUrl) {
+      if(btnElement.disabled) return;
+      AudioEngine.scan();
+      btnElement.disabled = true;
+      const originalText = btnElement.textContent;
+      btnElement.textContent = state.lang === 'ar' ? 'جاري تأمين الاتصال والتحميل...' : 'SECURING LINK & DOWNLOADING...';
+      
+      setTimeout(() => {
+          forceInvisibleDownload(fileUrl);
+          setTimeout(() => {
+              btnElement.textContent = originalText;
+              btnElement.disabled = false;
+          }, 4000); // 4 Seconds cooldown
+      }, 300);
+  }
+
   function triggerBurnProtocol(wrapId, resBoxId, imgId, btnIds, boxIds) {
       AudioEngine.scan(); 
       const wrap = document.getElementById(wrapId); wrap.classList.add('burn-effect');
@@ -744,11 +833,15 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
         let drv = null; if(stegoPayloadFile) drv = await uploadToDrive(stegoPayloadFile);
         showOverlay('جاري ختم البيانات...', 'ENCRYPTING...');
         const pObj = { t: document.getElementById('encMessage').value }; if(drv) pObj.f = { n: stegoPayloadFile.name, u: drv.dlLink, v: drv.viewLink, s: (stegoPayloadFile.size/1024/1024).toFixed(2) };
-        const pBytes = textEncoder.encode(JSON.stringify(pObj)); const uKey = await generateUltimateKey(pwd, pKey);
+        const pBytes = textEncoder.encode(JSON.stringify(pObj)); const uKey = generateUltimateKeySync(pwd, pKey);
         setTimeout(() => {
             try {
-                state.modalDataBlob = processImgCrypto(stegoCoverImg, pBytes, uKey); state.modalAction = 'STEGO';
-                document.getElementById('dlFileName').value = "Stealth_Cover"; document.getElementById('dlFormatWrapper').style.display = 'block';
+                state.modalDataBlob = processImgCrypto(stegoCoverImg, pBytes, uKey); 
+                state.modalAction = 'STEGO';
+                
+                document.getElementById('dlFileName').value = "Stealth_Cover"; 
+                document.getElementById('dlExtLabel').textContent = ".png"; // LOCK EXTENSION FOR STEGO
+                
                 document.getElementById('modalOverlay').classList.add('active'); AudioEngine.success();
             } catch(e) { toast(e.message, 'error', true); } finally { hideOverlay(); }
         }, 500);
@@ -757,10 +850,10 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
 
   setupDropzone('decDropzone', 'decFileInput', f => { const r = new FileReader(); r.onload = e => { document.getElementById('decPreviewImg').src = e.target.result; document.getElementById('decPreviewBox').classList.add('active'); document.getElementById('decFileName').textContent = f.name; AudioEngine.scan(); }; r.readAsDataURL(f); });
   
-  document.getElementById('decryptBtn').addEventListener('click', async () => {
+  document.getElementById('decryptBtn').addEventListener('click', () => {
     const imgEl = document.getElementById('decPreviewImg'); if (!imgEl.src || imgEl.src.endsWith(window.location.pathname)) return toast('noImg', 'error');
     const pwd = document.getElementById('decPassword').value, pKey = state.keys.dec; if (!pwd && !pKey) return toast('noKey', 'error');
-    showOverlay('جاري تحليل الصورة...', 'ANALYZING...'); const uKey = await generateUltimateKey(pwd, pKey);
+    showOverlay('جاري تحليل الصورة...', 'ANALYZING...'); const uKey = generateUltimateKeySync(pwd, pKey);
     setTimeout(() => {
       try {
         const cvs = document.getElementById('hiddenCanvas'); cvs.width = imgEl.naturalWidth; cvs.height = imgEl.naturalHeight; const ctx = cvs.getContext('2d', { willReadFrequently: true }); ctx.drawImage(imgEl, 0, 0); const data = ctx.getImageData(0,0,cvs.width,cvs.height).data;
@@ -776,7 +869,8 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
         if(payload.t) { resBox.classList.remove('empty'); resBox.textContent = payload.t; }
         if(payload.f && payload.f.u) {
             document.getElementById('decFileInfo').textContent = payload.f.n;
-            document.getElementById('decFileDlBtn').onclick = () => forceInvisibleDownload(payload.f.u); dlBox.classList.add('active');
+            document.getElementById('decFileDlBtn').onclick = function() { secureDownloadAction(this, payload.f.u); };
+            dlBox.classList.add('active');
             dossierImg.src = generateDossier(payload.f.n, payload.f.s); dossierImg.classList.add('active');
             dossierBtn.style.display='inline-block'; dossierBtn.onclick = () => { const a = document.createElement('a'); a.href = dossierImg.src; a.download = 'WANTED_DOSSIER.jpg'; a.click(); };
         }
@@ -827,12 +921,16 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
         let drv = null; if(audPayloadFile) drv = await uploadToDrive(audPayloadFile);
         showOverlay('جاري الحقن الصوتي...', 'AUDIO INJECTION...');
         const pObj = { t: document.getElementById('audMessage').value }; if(drv) pObj.f = { n: audPayloadFile.name, u: drv.dlLink, v: drv.viewLink, s: (audPayloadFile.size/1024/1024).toFixed(2) };
-        const pBytes = textEncoder.encode(JSON.stringify(pObj)); const uKey = await generateUltimateKey(pwd, pKey);
+        const pBytes = textEncoder.encode(JSON.stringify(pObj)); const uKey = generateUltimateKeySync(pwd, pKey);
         
         setTimeout(() => {
             try {
-                state.modalDataBlob = processWavStego(audCoverBuffer, pBytes, uKey); state.modalAction = 'FILE'; state.modalExt = '.wav';
-                document.getElementById('dlFileName').value = audEncFileName.replace('.wav','_SECURE'); document.getElementById('dlFormatWrapper').style.display = 'none';
+                state.modalDataBlob = processWavStego(audCoverBuffer, pBytes, uKey); 
+                state.modalAction = 'FILE'; 
+                
+                document.getElementById('dlFileName').value = audEncFileName.replace('.wav','_SECURE'); 
+                document.getElementById('dlExtLabel').textContent = ".wav"; // LOCK EXTENSION FOR AUDIO
+                
                 document.getElementById('modalOverlay').classList.add('active'); AudioEngine.success();
             } catch(e) { toast(e.message, 'error', true); } finally { hideOverlay(); }
         }, 500);
@@ -842,9 +940,9 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
   let audDecBuffer = null;
   setupDropzone('audDecDropzone', 'audDecInput', f => { const r = new FileReader(); r.onload = e => { audDecBuffer = e.target.result; document.getElementById('audDecName').textContent = f.name; AudioEngine.scan(); }; r.readAsArrayBuffer(f); });
   
-  document.getElementById('audDecryptBtn').addEventListener('click', async () => {
+  document.getElementById('audDecryptBtn').addEventListener('click', () => {
       if(!audDecBuffer) return toast('noImg', 'error'); const pwd = document.getElementById('audDecPassword').value, pKey = state.keys.audDec; if(!pwd && !pKey) return toast('noKey', 'error');
-      showOverlay('تحليل الترددات...', 'ANALYZING AUDIO...'); const uKey = await generateUltimateKey(pwd, pKey);
+      showOverlay('تحليل الترددات...', 'ANALYZING AUDIO...'); const uKey = generateUltimateKeySync(pwd, pKey);
       setTimeout(() => {
           try {
               const view = new DataView(audDecBuffer); const data = new Uint8Array(audDecBuffer);
@@ -865,7 +963,8 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
               if(payload.t) { resBox.classList.remove('empty'); resBox.textContent = payload.t; }
               if(payload.f && payload.f.u) {
                   document.getElementById('audDecFileInfo').textContent = payload.f.n;
-                  document.getElementById('audDecFileDlBtn').onclick = () => forceInvisibleDownload(payload.f.u); dlBox.classList.add('active');
+                  document.getElementById('audDecFileDlBtn').onclick = function() { secureDownloadAction(this, payload.f.u); };
+                  dlBox.classList.add('active');
                   dossierImg.src = generateDossier(payload.f.n, payload.f.s); dossierImg.classList.add('active');
                   dossierBtn.style.display='inline-block'; dossierBtn.onclick = () => { const a = document.createElement('a'); a.href = dossierImg.src; a.download = 'WANTED_DOSSIER.jpg'; a.click(); };
               }
@@ -911,8 +1010,12 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
       showOverlay('جاري التوليد...', 'GENERATING WAV...');
       try {
           const blob = await AudioEngine.exportMorseWAV(currentMorseStr);
-          state.modalAction = 'FILE'; state.modalDataBlob = blob; state.modalExt = '.wav';
-          document.getElementById('dlFileName').value = "MORSE_TRANSMISSION"; document.getElementById('dlFormatWrapper').style.display = 'none';
+          state.modalAction = 'FILE'; 
+          state.modalDataBlob = blob;
+          
+          document.getElementById('dlFileName').value = "MORSE_TRANSMISSION"; 
+          document.getElementById('dlExtLabel').textContent = ".wav"; // LOCK EXTENSION
+          
           document.getElementById('modalOverlay').classList.add('active'); AudioEngine.success();
       } catch(e) { toast('error', 'error'); } finally { hideOverlay(); }
   });
@@ -954,23 +1057,21 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
       } catch(e) { AudioEngine.error(); toast('errDec', 'error'); } finally { hideOverlay(); }
   });
 
-  /* ============ SYS_04: EXACT MIC.HTML LOGIC IMPLEMENTATION ============ */
-  
-  // Exact Dropzone setup from MIC.html
+  /* ============ SYS_04: EXACT MIC LOGIC IMPLEMENTATION ============ */
   setupDropzone('corrDropzone', 'corrFileInput', file => {
     const reader = new FileReader();
     reader.onload = e => {
       state.corruptFile = { file, buffer: e.target.result, name: file.name };
       document.getElementById('corrFileName').textContent = file.name;
-      AudioEngine.heavyDrop(); // Adapted slightly to V3 audio engine
+      AudioEngine.heavyDrop(); 
     }; reader.readAsArrayBuffer(file);
   });
 
-  // Exact XOR function logic from MIC.html
   function processXOR(isCorrupting) {
     if(!state.corruptFile || !state.corruptFile.buffer) { hideOverlay(); return toast('noFile', 'error'); }
     const pwd = document.getElementById('corrPassword').value;
-    if(!pwd) { hideOverlay(); return toast('noPwd', 'error'); }
+    const pKey = state.keys.corr;
+    if(!pwd && !pKey) { hideOverlay(); return toast('noPwd', 'error'); }
 
     showOverlay(
         isCorrupting ? 'جاري تمزيق المصفوفة...' : 'جاري استرجاع المصفوفة...', 
@@ -978,16 +1079,14 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
     );
     AudioEngine.heavyDrop();
 
-    // Exact 800ms setTimeout and Synchronous direct loop from MIC.html
     setTimeout(() => {
         try {
             const arr = new Uint8Array(state.corruptFile.buffer);
-            const key = textEncoder.encode(pwd);
+            const uKey = generateUltimateKeySync(pwd, pKey);
             const out = new Uint8Array(arr.length);
             
-            // EXACT LOOP
             for(let i=0; i<arr.length; i++) {
-                out[i] = arr[i] ^ key[i % key.length];
+                out[i] = arr[i] ^ uKey[i % uKey.length];
             }
 
             let outName = state.corruptFile.name;
@@ -996,16 +1095,15 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
 
             const blob = new Blob([out], { type: 'application/octet-stream' });
             
-            state.modalAction = 'FILE'; // Use V3.1 export action
+            state.modalAction = 'FILE'; 
             state.modalDataBlob = blob;
             
-            // UI Handling exactly like MIC.html
             const nameParts = outName.split('.');
             const ext = nameParts.length > 1 ? '.' + nameParts.pop() : '';
+            
             document.getElementById('dlFileName').value = nameParts.join('.');
-            state.modalExt = ext;
+            document.getElementById('dlExtLabel').textContent = ext; // DYNAMIC LOCK EXTENSION
 
-            document.getElementById('dlFormatWrapper').style.display = 'none';
             hideOverlay();
             document.getElementById('modalOverlay').classList.add('active');
             AudioEngine.success();
@@ -1022,14 +1120,18 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
 
   /* ============ UNIVERSAL MODAL EXPORT ============ */
   document.getElementById('modalConfirmDlBtn').addEventListener('click', () => {
-    AudioEngine.beep(); const name = document.getElementById('dlFileName').value.trim() || 'STEALTH_ARTIFACT';
+    AudioEngine.beep(); 
+    const name = document.getElementById('dlFileName').value.trim() || 'STEALTH_ARTIFACT';
+    const ext = document.getElementById('dlExtLabel').textContent; // Get locked extension
+    const finalName = name + ext;
+
     if (state.modalAction === 'STEGO') { 
-        const fmt = document.getElementById('dlFormat').value, ext = fmt.split('/')[1]; 
-        const a = document.createElement('a'); a.href = state.modalDataBlob.toDataURL(fmt, 1.0); a.download = name+'.'+ext; document.body.appendChild(a); a.click(); document.body.removeChild(a); 
+        // Forced to export as image/png for pure data preservation
+        const a = document.createElement('a'); a.href = state.modalDataBlob.toDataURL('image/png', 1.0); a.download = finalName; document.body.appendChild(a); a.click(); document.body.removeChild(a); 
     } 
     else if (state.modalAction === 'FILE') { 
         const url = URL.createObjectURL(state.modalDataBlob); 
-        const a = document.createElement('a'); a.href = url; a.download = name+state.modalExt; document.body.appendChild(a); a.click(); document.body.removeChild(a); setTimeout(()=>URL.revokeObjectURL(url), 100); 
+        const a = document.createElement('a'); a.href = url; a.download = finalName; document.body.appendChild(a); a.click(); document.body.removeChild(a); setTimeout(()=>URL.revokeObjectURL(url), 100); 
     }
     document.getElementById('modalOverlay').classList.remove('active'); toast('success', 'success');
   });
