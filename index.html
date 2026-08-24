@@ -11,7 +11,6 @@
 @font-face { font-family: 'Methlama-Regular'; src: url('https://cdn.jsdelivr.net/gh/morhafali5r-hub/M.F.L@main/MORHAF-Fonts/Methlama/KOMethlama-Regular.otf'); font-display: swap; }
 @font-face { font-family: 'Gali'; src: url('https://cdn.jsdelivr.net/gh/morhafali5r-hub/M.F.L@main/MORHAF-Fonts/gali/Gali.ttf'); font-display: swap; }
 @font-face { font-family: 'Panorama-Naskh'; src: url('https://cdn.jsdelivr.net/gh/morhafali5r-hub/M.F.L@main/MORHAF-Fonts/panorama-naksh/PanoramaNaskh-Scribble.ttf'); font-display: swap; }
-@font-face { font-family: 'Barseem-Mushaqhbat'; src: url('https://cdn.jsdelivr.net/gh/morhafali5r-hub/M.F.L@main/MORHAF-Fonts/barseem/Barseem-Mushaqhbat.otf'); font-display: swap; }
 
 /* ============ CYBER COLOR SYSTEM & ENV ============ */
 :root { 
@@ -38,7 +37,8 @@ header { text-align: center; margin-bottom: 40px; border-bottom: 1px solid var(-
 html[dir="ltr"] .header-actions { left: auto; right: 0; }
 .top-btn { background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); padding: 5px 15px; font-family: var(--font-mono); cursor: pointer; transition: 0.3s; font-size: 1rem; }
 .top-btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 10px var(--neon-cyan); }
-.sys-title { font-family: 'Sayaf-Heavy', var(--font-mono), sans-serif; font-size: 4.5rem; color: var(--text-main); text-shadow: 0 0 20px var(--neon-cyan); letter-spacing: 5px; margin-bottom: 10px; text-transform: uppercase; }
+
+.sys-title { font-family: 'Sayaf-Heavy', sans-serif; font-size: 4rem; color: var(--text-main); text-shadow: 0 0 20px var(--neon-cyan); letter-spacing: 5px; margin-bottom: 10px; text-transform: uppercase; }
 .sys-sub { font-size: 1.5rem; color: var(--neon-cyan); letter-spacing: 1px; font-family: 'Methlama-Regular', sans-serif; }
 
 /* Navigation */
@@ -73,7 +73,7 @@ html[dir="rtl"] .cyber-panel::after { right: auto; left: 0; border-right: none; 
 
 .panel-glare { position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15), transparent 50%); opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 10; mix-blend-mode: screen; transform: translateZ(1px); }
 
-.panel-title { font-family: 'Sayaf-Heavy', var(--font-mono), sans-serif; font-size: 2.8rem; color: var(--neon-cyan); margin-bottom: 30px; border-bottom: 1px dashed var(--text-muted); padding-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-end; transform: translateZ(30px); letter-spacing: 2px; }
+.panel-title { font-family: 'Sayaf-Heavy', sans-serif; font-size: 2.8rem; color: var(--neon-cyan); margin-bottom: 30px; border-bottom: 1px dashed var(--text-muted); padding-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-end; transform: translateZ(30px); letter-spacing: 2px; }
 .panel-title span { font-size: 1rem; color: var(--text-muted); font-family: var(--font-mono); letter-spacing: 1px; }
 
 /* Forms & Dropzones */
@@ -93,28 +93,24 @@ label { display: block; font-family: 'Methlama-Regular', sans-serif; font-size: 
 .preview-box img { width: 100%; max-height: 200px; object-fit: contain; }
 
 /* Unified Typography for Inputs */
-textarea, input[type=text], select, .password-field { width: 100%; background: rgba(0,0,0,0.8); border: 1px solid var(--text-muted); color: var(--neon-cyan); padding: 15px; font-family: 'Gali', var(--font-mono), sans-serif !important; font-size: 1.2rem !important; transition: 0.3s; outline: none; transform: translateZ(15px); }
+textarea, input[type=text], select, .password-field { width: 100%; background: rgba(0,0,0,0.8); border: 1px solid var(--text-muted); color: var(--neon-cyan); padding: 15px; font-family: 'Gali', sans-serif !important; font-size: 1.2rem !important; transition: 0.3s; outline: none; transform: translateZ(15px); }
 textarea:focus, input[type=text]:focus, select:focus, .password-field:focus { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 243, 255, 0.2); }
 textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 
-/* Password Field Logic */
+/* Cryptographic Password Input Layer */
 .crypto-key-group { display: flex; gap: 10px; align-items: stretch; transform: translateZ(15px); }
-.pass-wrap { flex: 1; position: relative; display: flex; align-items: center; }
+.pass-wrap { flex: 1; position: relative; }
 .password-field { direction: ltr !important; text-align: left !important; font-family: var(--font-mono) !important; letter-spacing: 5px; padding-right: 50px !important; }
-.toggle-pass { position: absolute; right: 10px !important; left: auto !important; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.4rem; transition: 0.3s; z-index: 5; }
+.toggle-pass { position: absolute; right: 15px !important; left: auto !important; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.4rem; transition: 0.3s; z-index: 5; }
 .toggle-pass:hover { color: var(--neon-cyan); }
 
 .file-key-btn { flex: 0 0 70px; background: rgba(0,0,0,0.8); border: 1px dashed var(--text-muted); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; cursor: pointer; transition: 0.3s; position: relative; }
 .file-key-btn:hover, .file-key-btn.active { border-color: var(--neon-purple); color: var(--neon-purple); background: rgba(176, 38, 255, 0.15); box-shadow: 0 0 20px rgba(176, 38, 255, 0.4); }
 .file-key-btn input { display: none; }
 
-.chk-group { margin-top: 25px; display: flex; align-items: center; gap: 10px; transform: translateZ(15px); }
-.chk-group input { width: 20px; height: 20px; accent-color: var(--neon-red); cursor: pointer; }
-.chk-group label { margin: 0; font-family: 'Methlama-Regular', sans-serif; color: var(--neon-red); cursor: pointer; font-size: 1.1rem; }
-
 /* Buttons */
 .btn { width: 100%; background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); padding: 18px; font-family: 'Methlama-Regular', sans-serif; font-size: 1.4rem; letter-spacing: 1px; cursor: pointer; margin-top: 30px; transition: 0.3s; clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px); transform: translateZ(25px); text-transform: uppercase; }
-.btn:hover:not(:disabled) { background: var(--neon-cyan); color: #000; box-shadow: 0 0 30px rgba(0, 243, 255, 0.6); }
+.btn:hover:not(:disabled) { background: var(--neon-cyan); color: #000; box-shadow: 0 0 30px rgba(0, 243, 255, 0.6); font-weight: bold; }
 .btn.danger { border-color: var(--neon-red); color: var(--neon-red); }
 .btn.danger:hover { background: var(--neon-red); color: #000; box-shadow: 0 0 30px rgba(255, 0, 60, 0.6); }
 .btn.success { border-color: var(--neon-green); color: var(--neon-green); }
@@ -124,7 +120,7 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 @media(max-width: 768px) { .action-group { flex-direction: column; gap: 10px; } .action-group .btn { margin-top: 0; } }
 
 /* Terminals & Results */
-.terminal-box { margin-top: 20px; background: rgba(0,0,0,0.9); border: 1px solid var(--text-muted); padding: 25px; font-family: 'Gali', var(--font-mono), sans-serif; font-size: 1.4rem; color: var(--neon-green); min-height: 140px; word-break: break-word; white-space: pre-wrap; line-height: 1.8; transition: all 0.5s; transform: translateZ(15px); box-shadow: inset 0 0 20px rgba(0,255,102,0.05); }
+.terminal-box { margin-top: 20px; background: rgba(0,0,0,0.9); border: 1px solid var(--text-muted); padding: 25px; font-family: 'Gali', sans-serif; font-size: 1.4rem; color: var(--neon-green); min-height: 140px; word-break: break-word; white-space: pre-wrap; line-height: 1.8; transition: all 0.5s; transform: translateZ(15px); box-shadow: inset 0 0 20px rgba(0,255,102,0.05); }
 .terminal-box.empty { color: var(--text-muted); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-style: italic; font-size: 1rem; box-shadow: none; }
 
 .dl-box { display: none; margin-top: 20px; border: 1px dashed var(--neon-purple); background: rgba(176, 38, 255, 0.08); padding: 25px; flex-direction: column; gap: 15px; align-items: center; transition: all 0.5s; transform: translateZ(20px); }
@@ -146,21 +142,22 @@ textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
 .modal-close { position: absolute; top: 15px; left: 20px; background: none; border: none; color: var(--text-muted); font-size: 2.5rem; cursor: pointer; transition: 0.3s; font-family: var(--font-mono); }
 html[dir="ltr"] .modal-close { left: auto; right: 20px; }
 .modal-close:hover { color: var(--neon-red); transform: scale(1.1); }
-.modal-title { font-family: 'Sayaf-Heavy', var(--font-mono), sans-serif; font-size: 3rem; color: var(--neon-cyan); margin-bottom: 30px; border-bottom: 1px dashed var(--text-muted); padding-bottom: 20px; text-align: center; }
+.modal-title { font-family: 'Sayaf-Heavy', sans-serif; font-size: 2.5rem; color: var(--neon-cyan); margin-bottom: 30px; border-bottom: 1px dashed var(--text-muted); padding-bottom: 20px; text-align: center; }
+
+/* System Status Text Overlay */
+.overlay-text { font-family: 'Sayaf-Heavy', sans-serif; font-size: 4rem; color: var(--neon-cyan); text-shadow: 0 0 40px var(--neon-cyan); letter-spacing: 2px; animation: pulseText 1.2s infinite alternate; text-align: center; }
+@keyframes pulseText { 0% { opacity: 0.4; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1.05); } }
 
 /* Progress Blur Overlay (For Upload/Download) */
-#progressOverlay .modal-content { border-color: var(--neon-purple); background: transparent; border: none; box-shadow: none; max-width: 800px; }
-.prog-stats { display: flex; justify-content: space-between; align-items: flex-end; font-family: var(--font-mono); font-size: 1.5rem; color: var(--neon-purple); margin-bottom: 15px; }
-.prog-track { height: 12px; background: rgba(176, 38, 255, 0.1); border-radius: 6px; overflow: hidden; width: 100%; }
+#progressOverlay .modal-content { border-color: var(--neon-purple); background: transparent; border: none; box-shadow: none; max-width: 800px; text-align: center; padding: 20px; }
+.prog-stats { display: flex; justify-content: space-between; align-items: flex-end; font-family: var(--font-mono); font-size: 1.5rem; color: var(--neon-purple); margin-bottom: 15px; margin-top: 30px; }
+.prog-track { height: 12px; background: rgba(176, 38, 255, 0.1); border-radius: 6px; overflow: hidden; width: 100%; margin-top: 20px; }
 .prog-fill { height: 100%; width: 0%; background: var(--neon-purple); box-shadow: 0 0 30px var(--neon-purple); transition: width 0.3s ease; }
-
-.overlay-text { font-family: 'Sayaf-Heavy', var(--font-mono), sans-serif; font-size: 4.5rem; color: var(--neon-cyan); text-shadow: 0 0 40px var(--neon-cyan); letter-spacing: 4px; animation: pulseText 1.2s infinite alternate; text-align: center; }
-@keyframes pulseText { 0% { opacity: 0.4; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1.05); } }
 
 /* Info Section Styling */
 .info-section { margin-bottom: 35px; border-right: 4px solid var(--text-muted); padding-right: 15px; }
 html[dir="ltr"] .info-section { border-right: none; border-left: 4px solid var(--text-muted); padding-right: 0; padding-left: 15px; }
-.info-section h4 { font-family: 'Sayaf-Heavy', var(--font-mono), sans-serif; color: var(--neon-cyan); font-size: 2rem; margin-bottom: 15px; letter-spacing: 1px; }
+.info-section h4 { font-family: 'Sayaf-Heavy', sans-serif; font-size: 2rem; margin-bottom: 15px; letter-spacing: 1px; }
 .info-section p { font-family: 'Methlama-Regular', sans-serif; color: var(--text-main); font-size: 1.3rem; line-height: 1.8; }
 .info-section ul { padding-inline-start: 25px; margin-top: 15px; color: var(--text-main); font-family: 'Methlama-Regular', sans-serif; font-size: 1.2rem; }
 .info-section li { margin-bottom: 10px; }
@@ -176,6 +173,7 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
 </head>
 <body dir="rtl">
 
+<!-- Cinematic SVG Distortion Filter -->
 <svg style="display: none;">
   <filter id="glitch-vfx">
     <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="2" result="noise" id="vfx-turbulence" />
@@ -187,24 +185,22 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
 <div class="vignette"></div>
 <div class="scanlines"></div>
 
+<!-- Unified Overlay for Actions -->
 <div id="sysOverlay" class="modal-overlay"><div class="overlay-text" id="overlayText">جاري المعالجة...</div></div>
+
+<!-- Pure Blur Overlay for Upload Progress -->
+<div id="progressOverlay" class="modal-overlay">
+  <div class="modal-content">
+      <div class="overlay-text" id="progOverlayTitle" style="font-size: 3rem; margin-bottom: 20px;">جاري نقل البيانات للشبكة...</div>
+      <div style="font-family: var(--font-mono); font-size: 4rem; color: var(--neon-purple); font-weight: bold; text-shadow: 0 0 20px var(--neon-purple); margin-bottom: 10px;" id="progOverlayPct">0%</div>
+      <div style="font-family: var(--font-mono); font-size: 1.5rem; color: var(--text-main);" id="progOverlayMb">0.00 / 0.00 MB</div>
+      <div class="prog-track"><div class="prog-fill" id="progOverlayFill"></div></div>
+  </div>
+</div>
+
 <div id="toast-container"></div>
 <canvas id="hiddenCanvas" style="display:none"></canvas>
 <canvas id="dossierCanvas" style="display:none"></canvas>
-
-<!-- Universal Progress Overlay (Upload/Download) -->
-<div id="progressOverlay" class="modal-overlay">
-  <div class="modal-content">
-    <h3 class="modal-title lang-txt" id="progOverlayTitle" data-ar="جاري نقل البيانات للشبكة..." data-en="TRANSMITTING DATA...">جاري نقل البيانات للشبكة...</h3>
-    <div class="prog-stats">
-        <span id="progOverlayMb">0.00 / 0.00 MB</span>
-        <span id="progOverlayPct" style="color: var(--neon-purple); font-weight: bold; font-size: 2rem;">0%</span>
-    </div>
-    <div class="prog-track">
-        <div class="prog-fill" id="progOverlayFill"></div>
-    </div>
-  </div>
-</div>
 
 <!-- Universal Extract/Export Modal -->
 <div id="modalOverlay" class="modal-overlay">
@@ -235,7 +231,7 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
         </div>
         <div class="info-section" style="border-color: var(--neon-purple);">
             <h4 style="color: var(--neon-purple);">[SYS_02]: الإخفاء الصوتي</h4>
-            <p>ارفع أي ملف صوتي بأي صيغة (MP3, OGG, إلخ..) وسيقوم النظام <span style="color: var(--neon-purple);">بتحويله تلقائياً لصيغة WAV النقية</span>. سيتم بعد ذلك حقن النصوص أو الملفات داخل الترددات الصغرى (LSB) للصوت. النتيجة: ملف صوتي يعمل بشكل طبيعي، ولا يمكن لأي أذن بشرية تمييز التشفير بداخله.</p>
+            <p>ارفع أي ملف صوتي بأي صيغة وسيقوم النظام <span style="color: var(--neon-purple);">بتحويله تلقائياً لصيغة WAV النقية</span>. سيتم بعد ذلك حقن النصوص أو الملفات داخل الترددات الصغرى للصوت. النتيجة: ملف صوتي يعمل بشكل طبيعي، ولا يمكن لأي أذن بشرية تمييز التشفير بداخله.</p>
         </div>
         <div class="info-section" style="border-color: var(--neon-green);">
             <h4 style="color: var(--neon-green);">[SYS_03]: محطة راديو مورس</h4>
@@ -243,11 +239,10 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
         </div>
         <div class="info-section" style="border-color: var(--neon-red);">
             <h4 style="color: var(--neon-red);">[SYS_04]: الإتلاف الجذري للمصفوفات</h4>
-            <p>نظام تحكم كامل في بنية الملفات الفيزيائية بدمج (كلمة السر + ملف مفتاح الأمان):</p>
+            <p>نظام تحكم كامل في بنية الملفات الفيزيائية عبر التلاعب بالبايتات:</p>
             <ul>
-                <li><span style="color: var(--neon-cyan);">إتلاف (CORRUPT):</span> تشفير الملف وتغيير بنيته، لا يمكن فتحه إلا بالرمز الصحيح.</li>
-                <li><span style="color: var(--neon-green);">استرجاع (RESTORE):</span> فك التشفير عن الملف المتلف مسبقاً لاستعادته.</li>
-                <li><span style="color: var(--neon-red);">تدمير (DESTROY):</span> كتابة بيانات عشوائية تماماً فوق بنية الملف. <b>النتيجة:</b> ملف ميت رياضياً لا يمكن لأي كائن استرجاعه حتى بوجود كلمة السر الأصلية.</li>
+                <li><span style="color: var(--neon-cyan);">إتلاف (CORRUPT):</span> تمزيق وتشفير بنية الملف ليصبح غير قابل للتشغيل، لا يمكن استعادته إلا بنفس كلمة السر.</li>
+                <li><span style="color: var(--neon-green);">استرجاع (RESTORE):</span> فك التشفير عن الملف المتلف مسبقاً لإعادته إلى حالته الطبيعية والعمل بكفاءة.</li>
             </ul>
         </div>
     </div>
@@ -260,7 +255,7 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
         </div>
         <div class="info-section" style="border-color: var(--neon-purple);">
             <h4 style="color: var(--neon-purple);">[SYS_02]: AUDIO STEGO</h4>
-            <p>Upload ANY audio format (MP3, OGG, etc.). The core <span style="color: var(--neon-purple);">auto-converts it to pure WAV format</span>, then injects text or files into the Least Significant Bits (LSB) of the audio frequencies. The resulting audio plays normally, perfectly inaudible to human ears.</p>
+            <p>Upload ANY audio format. The core <span style="color: var(--neon-purple);">auto-converts it to pure WAV format</span>, then injects text or files into the Least Significant Bits (LSB) of the audio frequencies. The resulting audio plays normally, perfectly inaudible to human ears.</p>
         </div>
         <div class="info-section" style="border-color: var(--neon-green);">
             <h4 style="color: var(--neon-green);">[SYS_03]: RADIO MORSE</h4>
@@ -268,11 +263,10 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
         </div>
         <div class="info-section" style="border-color: var(--neon-red);">
             <h4 style="color: var(--neon-red);">[SYS_04]: ABSOLUTE KILL MATRIX</h4>
-            <p>Total physical byte control using XOR combinations of (Text Password + Physical Key File):</p>
+            <p>Total physical byte control using Matrix manipulations:</p>
             <ul>
-                <li><span style="color: var(--neon-cyan);">CORRUPT:</span> Scrambles file bytes. Can only be restored with the exact key.</li>
-                <li><span style="color: var(--neon-green);">RESTORE:</span> Unlocks a previously corrupted file back to its original state.</li>
-                <li><span style="color: var(--neon-red);">DESTROY:</span> Overwrites the file matrix with absolute random noise. <b>Result:</b> A mathematically dead file, impossible to recover ever again.</li>
+                <li><span style="color: var(--neon-cyan);">CORRUPT:</span> Scrambles file bytes physically. Can only be restored with the exact password key.</li>
+                <li><span style="color: var(--neon-green);">RESTORE:</span> Unlocks a previously corrupted file back to its fully working original state.</li>
             </ul>
         </div>
     </div>
@@ -402,7 +396,7 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
       
       <div style="margin-bottom: 20px;">
         <label class="lang-txt" data-ar="لغة الشفرة (لتفادي تداخل الترددات)" data-en="MORSE LANGUAGE DICTIONARY">لغة الشفرة (لتفادي تداخل الترددات)</label>
-        <select id="morseLangSelect">
+        <select id="morseLangSelect" style="font-family: 'Methlama-Regular', sans-serif;">
           <option value="en">English (EN)</option>
           <option value="ar">عربي (AR)</option>
         </select>
@@ -434,21 +428,26 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
   <main id="corruptSys" class="system-view single-grid">
     <div class="cyber-panel">
       <div class="panel-glare"></div>
-      <div class="panel-title"><span class="lang-txt" data-ar="الإتلاف الجذري للمصفوفات" data-en="ABSOLUTE KILL MATRIX">الإتلاف الجذري للمصفوفات</span> <span>[CORRUPT/WIPE]</span></div>
-      
-      <label class="lang-txt" data-ar="الملف المستهدف [أي صيغة]" data-en="TARGET_ARTIFACT [ANY_FORMAT]">الملف المستهدف [أي صيغة]</label>
-      <div class="dropzone" id="corrDropzone" style="margin-bottom: 30px;"><input type="file" id="corrFileInput"><div class="dz-icon">☠️</div><div class="dz-text lang-txt" data-ar="اسحب الملف هنا" data-en="Drop File Here">اسحب الملف هنا</div><div class="dz-filename" id="corrFileName"></div></div>
+      <div class="panel-title"><span class="lang-txt" data-ar="إتلاف واسترجاع المصفوفات" data-en="XOR_MATRIX">إتلاف واسترجاع المصفوفات</span> <span>[CORRUPT/RESTORE]</span></div>
+      <p class="lang-txt" style="color:var(--text-muted); font-size:1.1rem; margin-bottom:25px; text-align:center;" data-ar="معالجة تدميرية على مستوى البايت. الملف سيتلف تماماً ويصبح غير قابل للقراءة، ولن يعود لحالته الأصلية إلا بنفس مفتاح التشفير." data-en="Byte-level destructive manipulation. Renders file unreadable. Reversible exclusively with identical key.">معالجة تدميرية على مستوى البايت. الملف سيتلف تماماً ويصبح غير قابل للقراءة، ولن يعود لحالته الأصلية إلا بنفس مفتاح التشفير.</p>
 
-      <label class="lang-txt" data-ar="مفتاح التشفير الجذري [نص / ملف]" data-en="CRYPTOGRAPHIC_KEY [TEXT / FILE]">مفتاح التشفير الجذري [نص / ملف]</label>
-      <div class="crypto-key-group">
-        <div class="pass-wrap"><input type="password" id="corrPassword" class="password-field" placeholder="••••••••"><button type="button" class="toggle-pass" data-target="corrPassword">👁</button></div>
-        <div class="file-key-btn" id="corrFileKeyBtn" title="Upload Physical Key File">🗝️<input type="file" id="corrFileKeyInput"></div>
+      <label class="lang-txt" data-ar="الملف المستهدف [أي صيغة]" data-en="TARGET_ARTIFACT [ANY_FORMAT]">الملف المستهدف [أي صيغة]</label>
+      <div class="dropzone" id="corrDropzone">
+        <input type="file" id="corrFileInput">
+        <div class="dz-icon">☠️</div>
+        <div class="dz-text lang-txt" data-ar="اسحب الملف للمعالجة" data-en="Drop File for Destructive Processing">اسحب الملف للمعالجة</div>
+        <div class="dz-filename" id="corrFileName"></div>
+      </div>
+
+      <label class="lang-txt" data-ar="مفتاح التشفير الجذري" data-en="CRYPTOGRAPHIC_KEY">مفتاح التشفير الجذري</label>
+      <div class="pass-wrap">
+        <input type="password" id="corrPassword" class="password-field" placeholder="••••••••">
+        <button type="button" class="toggle-pass" data-target="corrPassword">👁</button>
       </div>
 
       <div class="action-group">
-        <button class="btn success lang-txt" id="restoreActionBtn" data-ar="استرجاع الملف (RESTORE)" data-en="RESTORE MATRIX">استرجاع الملف (RESTORE)</button>
-        <button class="btn lang-txt" id="corruptActionBtn" data-ar="إتلاف الملف (CORRUPT)" data-en="CORRUPT MATRIX">إتلاف الملف (CORRUPT)</button>
-        <button class="btn danger lang-txt" id="destroyActionBtn" data-ar="تدمير نهائي (DESTROY)" data-en="ABSOLUTE DESTROY">تدمير نهائي (DESTROY)</button>
+        <button class="btn danger lang-txt" id="corruptActionBtn" data-ar="إتلاف الملف (CORRUPT)" data-en="CORRUPT_MATRIX">إتلاف الملف (CORRUPT)</button>
+        <button class="btn success lang-txt" id="restoreActionBtn" data-ar="استرجاع الملف (RESTORE)" data-en="RESTORE_MATRIX">استرجاع الملف (RESTORE)</button>
       </div>
     </div>
   </main>
@@ -497,7 +496,7 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
       error: () => { init(); const o = ctx.createOscillator(); const g = ctx.createGain(); o.type = 'sawtooth'; o.frequency.setValueAtTime(100, ctx.currentTime); g.gain.setValueAtTime(0.1, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4); o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.4); },
       success: () => { init(); const o = ctx.createOscillator(); const g = ctx.createGain(); o.type = 'sine'; o.frequency.setValueAtTime(1200, ctx.currentTime); o.frequency.setValueAtTime(1800, ctx.currentTime + 0.1); g.gain.setValueAtTime(0.05, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5); o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.5); },
       scan: () => { init(); const o = ctx.createOscillator(); const g = ctx.createGain(); o.type = 'sawtooth'; o.frequency.setValueAtTime(200, ctx.currentTime); o.frequency.linearRampToValueAtTime(1000, ctx.currentTime + 0.3); g.gain.setValueAtTime(0.02, ctx.currentTime); g.gain.linearRampToValueAtTime(0.001, ctx.currentTime + 0.3); o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.3); },
-      heavyDrop: () => { init(); const o = ctx.createOscillator(); const g = ctx.createGain(); o.type = 'sine'; o.frequency.setValueAtTime(150, ctx.currentTime); o.frequency.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.6); g.gain.setValueAtTime(0.5, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6); o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.6); },
+      heavyDrop: () => { init(); const o = ctx.createOscillator(); const g = ctx.createGain(); const filter = ctx.createBiquadFilter(); o.type = 'square'; o.frequency.setValueAtTime(50, ctx.currentTime); o.frequency.exponentialRampToValueAtTime(10, ctx.currentTime + 0.5); filter.type = 'lowpass'; filter.frequency.setValueAtTime(300, ctx.currentTime); filter.frequency.exponentialRampToValueAtTime(20, ctx.currentTime + 0.5); g.gain.setValueAtTime(0.3, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5); o.connect(filter); filter.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.5); },
       corruptStart: () => { init(); if(!isPlaying) return; lpf.frequency.rampTo(2000, 0.5); dist.curve = makeDistortionCurve(100); },
       corruptEnd: () => { if(!isPlaying) return; lpf.frequency.rampTo(400, 0.5); dist.curve = makeDistortionCurve(0); },
       playMorse: (morseStr) => {
@@ -594,10 +593,19 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
 
   /* ============ STATE & I18N ============ */
   const textEncoder = new TextEncoder(); const textDecoder = new TextDecoder('utf-8', { fatal: true });
-  const state = { lang: 'ar', keys: { enc:null, dec:null, corr:null, audEnc:null, audDec:null }, payloadCache: {}, modalAction: null, modalDataBlob: null, modalExt: '' };
+  const state = { 
+      lang: 'ar', 
+      keys: { enc:null, dec:null, audEnc:null, audDec:null }, 
+      payloadCache: {}, 
+      modalAction: null, 
+      modalDataBlob: null, 
+      modalExt: '',
+      corruptFile: { file: null, buffer: null, name: '' } // EXACT state variable from MIC.html
+  };
+  
   const msgs = {
-    ar: { success: '✅ تمت العملية بنجاح', error: '⚠️ خطأ: ', noImg: 'الملف مطلوب', noKey: 'المفتاح مطلوب', errUpload: 'فشل الرفع للشبكة', errDec: 'فشل الفك / المفتاح خاطئ', noFile: 'الملف مطلوب', burn: 'تم مسح البيانات نهائياً' },
-    en: { success: '✅ SUCCESSFUL', error: '⚠️ ERROR: ', noImg: 'File required', noKey: 'Key required', errUpload: 'Upload failed', errDec: 'Decryption Failed / Wrong Key', noFile: 'File required', burn: 'DATA PURGED' }
+    ar: { success: '✅ تمت العملية بنجاح', error: '⚠️ خطأ: ', noImg: 'الملف مطلوب', noKey: 'المفتاح مطلوب', errUpload: 'فشل الرفع للشبكة', errDec: 'فشل الفك / المفتاح خاطئ', noFile: 'الملف مطلوب', noPwd: 'كلمة السر مطلوبة', burn: 'تم مسح البيانات نهائياً' },
+    en: { success: '✅ SUCCESSFUL', error: '⚠️ ERROR: ', noImg: 'File required', noKey: 'Key required', errUpload: 'Upload failed', errDec: 'Decryption Failed / Wrong Key', noFile: 'File required', noPwd: 'Password required', burn: 'DATA PURGED' }
   };
 
   function toast(keyMsg, type='info', isDirect=false) {
@@ -636,27 +644,15 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
   
   setupFileKey('encFileKeyBtn', 'encFileKeyInput', 'enc'); 
   setupFileKey('decFileKeyBtn', 'decFileKeyInput', 'dec'); 
-  setupFileKey('corrFileKeyBtn', 'corrFileKeyInput', 'corr');
   setupFileKey('audEncFileKeyBtn', 'audEncFileKeyInput', 'audEnc');
   setupFileKey('audDecFileKeyBtn', 'audDecFileKeyInput', 'audDec');
 
-  // SAFE ULTIMATE KEY (With Local 'file://' Fallback fix)
+  // Ultimate Key Generation 
   async function generateUltimateKey(textPass, fileBuffer) {
       if(!textPass && !fileBuffer) throw new Error("Missing Key Parameters");
       let fk = new Uint8Array(32);
-      
-      // Check if crypto.subtle exists (Fails on local file:// in some browsers)
-      if (window.crypto && window.crypto.subtle) {
-          if(textPass) { const pb = textEncoder.encode(textPass); const h = await crypto.subtle.digest('SHA-256', pb); const ha = new Uint8Array(h); for(let i=0; i<32; i++) fk[i] = ha[i]; }
-          if(fileBuffer) { const h = await crypto.subtle.digest('SHA-256', fileBuffer); const ha = new Uint8Array(h); for(let i=0; i<32; i++) { if(textPass) fk[i] ^= ha[i]; else fk[i] = ha[i]; } }
-      } else {
-          // Fallback algorithm for offline / local execution
-          if(textPass) { for(let i=0; i<textPass.length; i++) fk[i%32] ^= textPass.charCodeAt(i); }
-          if(fileBuffer) {
-              const view = new Uint8Array(fileBuffer);
-              for(let i=0; i<view.length; i+=Math.max(1, Math.floor(view.length/2048))) fk[i%32] ^= view[i];
-          }
-      }
+      if(textPass) { const pb = textEncoder.encode(textPass); const h = await crypto.subtle.digest('SHA-256', pb); const ha = new Uint8Array(h); for(let i=0; i<32; i++) fk[i] = ha[i]; }
+      if(fileBuffer) { const h = await crypto.subtle.digest('SHA-256', fileBuffer); const ha = new Uint8Array(h); for(let i=0; i<32; i++) { if(textPass) fk[i] ^= ha[i]; else fk[i] = ha[i]; } }
       return fk;
   }
 
@@ -681,12 +677,13 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
     
     const progBox = document.getElementById('progressOverlay');
     const title = document.getElementById('progOverlayTitle');
-    const fill = document.getElementById('progOverlayFill');
     const pct = document.getElementById('progOverlayPct');
     const mb = document.getElementById('progOverlayMb');
+    const fill = document.getElementById('progOverlayFill');
     
     title.textContent = state.lang === 'ar' ? 'جاري نقل البيانات للشبكة...' : 'TRANSMITTING DATA...';
-    progBox.classList.add('active'); fill.style.width = '0%'; pct.textContent = '0%'; const tMB = (file.size / (1024 * 1024)).toFixed(2); mb.textContent = `0.00 / ${tMB} MB`;
+    progBox.classList.add('active'); pct.textContent = '0%'; fill.style.width = '0%';
+    const tMB = (file.size / (1024 * 1024)).toFixed(2); mb.textContent = `0.00 / ${tMB} MB`;
     
     try {
         const auth = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'getUploadUrl', fileName: file.name, mimeType: file.type }) }).then(r=>r.json());
@@ -696,7 +693,7 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
             let end = Math.min(start + chunk, file.size); let c = file.slice(start, end);
             await new Promise((res, rej) => {
                 const x = new XMLHttpRequest(); x.open('PUT', WORKER_URL, true); x.setRequestHeader('Upload-Url', auth.uploadUrl); x.setRequestHeader('Content-Range', `bytes ${start}-${end - 1}/${file.size}`);
-                x.upload.onprogress = e => { if (e.lengthComputable) { let p = Math.round(((start+e.loaded)/file.size)*100); fill.style.width = p+'%'; pct.textContent = p+'%'; mb.textContent = `${((start+e.loaded)/(1024*1024)).toFixed(2)} / ${tMB} MB`; } };
+                x.upload.onprogress = e => { if (e.lengthComputable) { let p = Math.round(((start+e.loaded)/file.size)*100); pct.textContent = p+'%'; fill.style.width = p+'%'; mb.textContent = `${((start+e.loaded)/(1024*1024)).toFixed(2)} / ${tMB} MB`; } };
                 x.onload = () => { if([200,201,308].includes(x.status)){ if(x.status!==308) fileId=JSON.parse(x.responseText).id; res(); } else rej(); }; x.onerror = rej; x.send(c);
             }); start = end;
         }
@@ -957,59 +954,71 @@ html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-c
       } catch(e) { AudioEngine.error(); toast('errDec', 'error'); } finally { hideOverlay(); }
   });
 
-  /* ============ SYS_04: ABSOLUTE KILL MATRIX ============ */
-  let corrBuffer = null, corrName = '';
-  setupDropzone('corrDropzone', 'corrFileInput', f => { const r = new FileReader(); r.onload = e => { corrBuffer = e.target.result; corrName = f.name; document.getElementById('corrFileName').textContent = f.name; AudioEngine.heavyDrop(); }; r.readAsArrayBuffer(f); });
+  /* ============ SYS_04: EXACT MIC.HTML LOGIC IMPLEMENTATION ============ */
+  
+  // Exact Dropzone setup from MIC.html
+  setupDropzone('corrDropzone', 'corrFileInput', file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      state.corruptFile = { file, buffer: e.target.result, name: file.name };
+      document.getElementById('corrFileName').textContent = file.name;
+      AudioEngine.heavyDrop(); // Adapted slightly to V3 audio engine
+    }; reader.readAsArrayBuffer(file);
+  });
 
-  async function processMatrix(mode) {
-    if(!corrBuffer) { hideOverlay(); return toast('noFile', 'error'); }
-    const pwd = document.getElementById('corrPassword').value, pKey = state.keys.corr;
-    if(!pwd && !pKey) { hideOverlay(); return toast('noKey', 'error'); }
+  // Exact XOR function logic from MIC.html
+  function processXOR(isCorrupting) {
+    if(!state.corruptFile || !state.corruptFile.buffer) { hideOverlay(); return toast('noFile', 'error'); }
+    const pwd = document.getElementById('corrPassword').value;
+    if(!pwd) { hideOverlay(); return toast('noPwd', 'error'); }
 
-    triggerDisplacementVFX(2500); 
-    
-    try {
-        const uKey = await generateUltimateKey(pwd, pKey);
-        const arr = new Uint8Array(corrBuffer); const out = new Uint8Array(arr.length);
-        const cSize = 256*1024;
-        
-        for (let i = 0; i < arr.length; i += cSize) {
-            const end = Math.min(i + cSize, arr.length);
-            for (let j = i; j < end; j++) { 
-                if (mode === 'destroy') { out[j] = Math.floor(Math.random() * 256); } 
-                else { out[j] = arr[j] ^ uKey[j % uKey.length]; }
+    showOverlay(
+        isCorrupting ? 'جاري تمزيق المصفوفة...' : 'جاري استرجاع المصفوفة...', 
+        isCorrupting ? 'CORRUPTING MATRIX...' : 'RESTORING MATRIX...'
+    );
+    AudioEngine.heavyDrop();
+
+    // Exact 800ms setTimeout and Synchronous direct loop from MIC.html
+    setTimeout(() => {
+        try {
+            const arr = new Uint8Array(state.corruptFile.buffer);
+            const key = textEncoder.encode(pwd);
+            const out = new Uint8Array(arr.length);
+            
+            // EXACT LOOP
+            for(let i=0; i<arr.length; i++) {
+                out[i] = arr[i] ^ key[i % key.length];
             }
-            await new Promise(r => setTimeout(r, 0)); // Non-blocking Yield
+
+            let outName = state.corruptFile.name;
+            if(isCorrupting && !outName.endsWith('.corrupt')) outName += '.corrupt';
+            if(!isCorrupting && outName.endsWith('.corrupt')) outName = outName.replace('.corrupt', '');
+
+            const blob = new Blob([out], { type: 'application/octet-stream' });
+            
+            state.modalAction = 'FILE'; // Use V3.1 export action
+            state.modalDataBlob = blob;
+            
+            // UI Handling exactly like MIC.html
+            const nameParts = outName.split('.');
+            const ext = nameParts.length > 1 ? '.' + nameParts.pop() : '';
+            document.getElementById('dlFileName').value = nameParts.join('.');
+            state.modalExt = ext;
+
+            document.getElementById('dlFormatWrapper').style.display = 'none';
+            hideOverlay();
+            document.getElementById('modalOverlay').classList.add('active');
+            AudioEngine.success();
+            
+        } catch(e) { 
+            toast('Error Processing Matrix', 'error', true); 
+            hideOverlay(); 
         }
-
-        let outName = corrName; 
-        if(mode === 'corrupt' && !outName.endsWith('.corrupt')) outName += '.corrupt'; 
-        if((mode === 'restore' || mode === 'destroy') && outName.endsWith('.corrupt')) outName = outName.replace('.corrupt', '');
-        if(mode === 'destroy') outName = "DESTROYED_" + outName;
-
-        state.modalAction = 'FILE'; state.modalDataBlob = new Blob([out], { type: 'application/octet-stream' });
-        const nameParts = outName.split('.'); state.modalExt = nameParts.length > 1 ? '.' + nameParts.pop() : '';
-        document.getElementById('dlFileName').value = nameParts.join('.');
-        document.getElementById('dlFormatWrapper').style.display = 'none'; 
-        
-        hideOverlay(); document.getElementById('modalOverlay').classList.add('active');
-    } catch(e) { 
-        console.error(e);
-        toast('Error Processing Matrix', 'error', true); 
-        hideOverlay(); 
-    }
+    }, 800);
   }
 
-  function triggerMatrix(mode) {
-      const msgAr = mode === 'destroy' ? 'جاري التدمير النهائي...' : (mode==='corrupt' ? 'جاري الإتلاف الجذري...' : 'جاري الاسترجاع...');
-      const msgEn = mode === 'destroy' ? 'ABSOLUTE WIPING...' : (mode==='corrupt' ? 'CORRUPTING...' : 'RESTORING...');
-      showOverlay(msgAr, msgEn);
-      setTimeout(() => processMatrix(mode), 100); // Wait for overlay to render before blocking
-  }
-
-  document.getElementById('corruptActionBtn').addEventListener('click', () => triggerMatrix('corrupt'));
-  document.getElementById('restoreActionBtn').addEventListener('click', () => triggerMatrix('restore'));
-  document.getElementById('destroyActionBtn').addEventListener('click', () => triggerMatrix('destroy'));
+  document.getElementById('corruptActionBtn').addEventListener('click', () => processXOR(true));
+  document.getElementById('restoreActionBtn').addEventListener('click', () => processXOR(false));
 
   /* ============ UNIVERSAL MODAL EXPORT ============ */
   document.getElementById('modalConfirmDlBtn').addEventListener('click', () => {
