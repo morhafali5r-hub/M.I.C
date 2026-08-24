@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MORHAF STEALTH | Cinematic Cyber Core V3.1</title>
+<style>
+/* ============ FONTS ============ */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@font-face { font-family: 'Sayaf-Heavy'; src: url('https://cdn.jsdelivr.net/gh/morhafali5r-hub/M.F.L@main/MORHAF-Fonts/sayaf/AVT-ar-Sayaf-HeavyHatch.ttf'); font-display: swap; }
+@font-face { font-family: 'Methlama-Regular'; src: url('https://cdn.jsdelivr.net/gh/morhafali5r-hub/M.F.L@main/MORHAF-Fonts/Methlama/KOMethlama-Regular.otf'); font-display: swap; }
+@font-face { font-family: 'Gali'; src: url('https://cdn.jsdelivr.net/gh/morhafali5r-hub/M.F.L@main/MORHAF-Fonts/gali/Gali.ttf'); font-display: swap; }
+@font-face { font-family: 'Panorama-Naskh'; src: url('https://cdn.jsdelivr.net/gh/morhafali5r-hub/M.F.L@main/MORHAF-Fonts/panorama-naksh/PanoramaNaskh-Scribble.ttf'); font-display: swap; }
+@font-face { font-family: 'Barseem-Mushaqhbat'; src: url('https://cdn.jsdelivr.net/gh/morhafali5r-hub/M.F.L@main/MORHAF-Fonts/barseem/Barseem-Mushaqhbat.otf'); font-display: swap; }
+
+/* ============ CYBER COLOR SYSTEM & ENV ============ */
+:root { 
+    --bg-core: #030305; --bg-panel: rgba(10, 10, 15, 0.65); 
+    --neon-cyan: #00f3ff; --neon-red: #ff003c; --neon-purple: #b026ff; --neon-green: #00ff66; 
+    --text-main: #e0f8ff; --text-muted: #4b6a78; --grid-color: rgba(0, 243, 255, 0.05); 
+    --font-mono: 'Share Tech Mono', monospace; 
+}
+* { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+html, body { height: 100%; scroll-behavior: smooth; background-color: var(--bg-core); color: var(--text-main); font-family: 'Methlama-Regular', sans-serif; overflow-x: hidden; }
+
+/* Cinematic VFX Background */
+.cyber-grid { position: fixed; inset: 0; z-index: -3; background-size: 40px 40px; background-image: linear-gradient(to right, var(--grid-color) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px); transform: perspective(600px) rotateX(60deg) translateY(-100px) translateZ(-200px); animation: gridMove 15s linear infinite; }
+@keyframes gridMove { 0% { transform: perspective(600px) rotateX(60deg) translateY(0) translateZ(-200px); } 100% { transform: perspective(600px) rotateX(60deg) translateY(40px) translateZ(-200px); } }
+.scanlines { position: fixed; inset: 0; z-index: 9999; pointer-events: none; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); background-size: 100% 3px, 3px 100%; opacity: 0.8; }
+.vignette { position: fixed; inset: 0; z-index: -2; pointer-events: none; background: radial-gradient(circle, transparent 30%, #000 120%); }
+
+#main-wrap { transition: filter 0.1s; perspective: 1500px; position: relative; z-index: 10; min-height: 100%; display: flex; flex-direction: column; }
+.wrap { max-width: 1400px; margin: 0 auto; padding: 40px 20px 120px; width: 100%; flex: 1; }
+
+/* ============ LAYOUT & HEADER ============ */
+header { text-align: center; margin-bottom: 40px; border-bottom: 1px solid var(--neon-cyan); padding-bottom: 20px; position: relative; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+.header-actions { position: absolute; top: 0; left: 0; display: flex; gap: 10px; }
+html[dir="ltr"] .header-actions { left: auto; right: 0; }
+.top-btn { background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); padding: 5px 15px; font-family: var(--font-mono); cursor: pointer; transition: 0.3s; font-size: 1rem; }
+.top-btn:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 10px var(--neon-cyan); }
+.sys-title { font-family: 'Sayaf-Heavy', var(--font-mono), sans-serif; font-size: 4.5rem; color: var(--text-main); text-shadow: 0 0 20px var(--neon-cyan); letter-spacing: 5px; margin-bottom: 10px; text-transform: uppercase; }
+.sys-sub { font-size: 1.5rem; color: var(--neon-cyan); letter-spacing: 1px; font-family: 'Methlama-Regular', sans-serif; }
+
+/* Navigation */
+.sys-nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 50px; flex-wrap: wrap; }
+.nav-btn { background: transparent; border: 1px solid var(--text-muted); color: var(--text-muted); padding: 12px 25px; font-family: 'Methlama-Regular', sans-serif; font-size: 1.2rem; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
+.nav-btn::before { content: ''; position: absolute; top: 0; left: 0; width: 10px; height: 100%; background: var(--neon-cyan); transform: translateX(-100%); transition: 0.3s; }
+.nav-btn:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 243, 255, 0.2) inset; }
+.nav-btn.active { border-color: var(--neon-cyan); color: #000; background: var(--neon-cyan); }
+.nav-btn.active::before { transform: translateX(0); }
+
+/* System Views */
+.system-view { display: none; animation: glitchReveal 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; width: 100%; }
+.system-view.active { display: grid; }
+@keyframes glitchReveal { 0% { opacity: 0; transform: translate(-20px, 20px) scale(0.98); filter: blur(10px); } 100% { opacity: 1; transform: translate(0) scale(1); filter: blur(0); } }
+.dual-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+.single-grid { grid-template-columns: 1fr; max-width: 1000px; margin: 0 auto; }
+@media(max-width: 1024px) { .dual-grid { grid-template-columns: 1fr; } }
+
+/* 3D PARALLAX PANELS */
+.cyber-panel { 
+  background: var(--bg-panel); border: 1px solid var(--text-muted); padding: 40px; 
+  position: relative; backdrop-filter: blur(25px); 
+  clip-path: polygon(0 0, calc(100% - 25px) 0, 100% 25px, 100% 100%, 25px 100%, 0 calc(100% - 25px)); 
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.9);
+  transform-style: preserve-3d; transition: transform 0.1s ease-out, border-color 0.3s;
+  will-change: transform;
+}
+.cyber-panel::before { content: ''; position: absolute; top: 0; left: 0; width: 35px; height: 35px; border-top: 2px solid var(--neon-cyan); border-left: 2px solid var(--neon-cyan); pointer-events: none; }
+.cyber-panel::after { content: ''; position: absolute; bottom: 0; right: 0; width: 35px; height: 35px; border-bottom: 2px solid var(--neon-cyan); border-right: 2px solid var(--neon-cyan); pointer-events: none; }
+html[dir="rtl"] .cyber-panel::before { left: auto; right: 0; border-left: none; border-right: 2px solid var(--neon-cyan); }
+html[dir="rtl"] .cyber-panel::after { right: auto; left: 0; border-right: none; border-left: 2px solid var(--neon-cyan); }
+
+.panel-glare { position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15), transparent 50%); opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 10; mix-blend-mode: screen; transform: translateZ(1px); }
+
+.panel-title { font-family: 'Sayaf-Heavy', var(--font-mono), sans-serif; font-size: 2.8rem; color: var(--neon-cyan); margin-bottom: 30px; border-bottom: 1px dashed var(--text-muted); padding-bottom: 15px; display: flex; justify-content: space-between; align-items: flex-end; transform: translateZ(30px); letter-spacing: 2px; }
+.panel-title span { font-size: 1rem; color: var(--text-muted); font-family: var(--font-mono); letter-spacing: 1px; }
+
+/* Forms & Dropzones */
+label { display: block; font-family: 'Methlama-Regular', sans-serif; font-size: 1.3rem; color: var(--text-main); margin: 25px 0 10px; transform: translateZ(15px); }
+
+.dropzone { border: 1px dashed var(--text-muted); padding: 40px 20px; text-align: center; cursor: pointer; transition: all 0.3s; background: rgba(0, 243, 255, 0.02); position: relative; transform: translateZ(20px); }
+.dropzone:hover, .dropzone.drag { border-color: var(--neon-cyan); background: rgba(0, 243, 255, 0.08); box-shadow: 0 0 25px rgba(0, 243, 255, 0.2); }
+.dropzone input[type=file] { display: none; }
+.dropzone * { pointer-events: none; } 
+.dz-icon { font-size: 3rem; color: var(--text-muted); margin-bottom: 10px; transition: 0.3s; font-family: 'Panorama-Naskh'; }
+.dropzone:hover .dz-icon { color: var(--neon-cyan); transform: scale(1.1); }
+.dz-text { font-family: 'Methlama-Regular', sans-serif; font-size: 1.3rem; color: var(--text-main); }
+.dz-filename { font-family: var(--font-mono); font-size: 0.9rem; color: var(--neon-purple); margin-top: 10px; word-break: break-all; font-weight: bold; }
+
+.preview-box { display: none; margin-top: 15px; border: 1px solid var(--text-muted); padding: 5px; background: #000; justify-content: center; transform: translateZ(20px); }
+.preview-box.active { display: flex; }
+.preview-box img { width: 100%; max-height: 200px; object-fit: contain; }
+
+/* Unified Typography for Inputs */
+textarea, input[type=text], select, .password-field { width: 100%; background: rgba(0,0,0,0.8); border: 1px solid var(--text-muted); color: var(--neon-cyan); padding: 15px; font-family: 'Gali', var(--font-mono), sans-serif !important; font-size: 1.2rem !important; transition: 0.3s; outline: none; transform: translateZ(15px); }
+textarea:focus, input[type=text]:focus, select:focus, .password-field:focus { border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 243, 255, 0.2); }
+textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+
+/* Password Field Logic */
+.crypto-key-group { display: flex; gap: 10px; align-items: stretch; transform: translateZ(15px); }
+.pass-wrap { flex: 1; position: relative; display: flex; align-items: center; }
+.password-field { direction: ltr !important; text-align: left !important; font-family: var(--font-mono) !important; letter-spacing: 5px; padding-right: 50px !important; }
+.toggle-pass { position: absolute; right: 10px !important; left: auto !important; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.4rem; transition: 0.3s; z-index: 5; }
+.toggle-pass:hover { color: var(--neon-cyan); }
+
+.file-key-btn { flex: 0 0 70px; background: rgba(0,0,0,0.8); border: 1px dashed var(--text-muted); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; cursor: pointer; transition: 0.3s; position: relative; }
+.file-key-btn:hover, .file-key-btn.active { border-color: var(--neon-purple); color: var(--neon-purple); background: rgba(176, 38, 255, 0.15); box-shadow: 0 0 20px rgba(176, 38, 255, 0.4); }
+.file-key-btn input { display: none; }
+
+.chk-group { margin-top: 25px; display: flex; align-items: center; gap: 10px; transform: translateZ(15px); }
+.chk-group input { width: 20px; height: 20px; accent-color: var(--neon-red); cursor: pointer; }
+.chk-group label { margin: 0; font-family: 'Methlama-Regular', sans-serif; color: var(--neon-red); cursor: pointer; font-size: 1.1rem; }
+
+/* Buttons */
+.btn { width: 100%; background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); padding: 18px; font-family: 'Methlama-Regular', sans-serif; font-size: 1.4rem; letter-spacing: 1px; cursor: pointer; margin-top: 30px; transition: 0.3s; clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px); transform: translateZ(25px); text-transform: uppercase; }
+.btn:hover:not(:disabled) { background: var(--neon-cyan); color: #000; box-shadow: 0 0 30px rgba(0, 243, 255, 0.6); }
+.btn.danger { border-color: var(--neon-red); color: var(--neon-red); }
+.btn.danger:hover { background: var(--neon-red); color: #000; box-shadow: 0 0 30px rgba(255, 0, 60, 0.6); }
+.btn.success { border-color: var(--neon-green); color: var(--neon-green); }
+.btn.success:hover { background: var(--neon-green); color: #000; box-shadow: 0 0 30px rgba(0, 255, 102, 0.6); }
+.btn.small { width: auto; padding: 12px 30px; font-size: 1.2rem; margin-top: 20px; }
+.action-group { display: flex; gap: 20px; margin-top: 30px; transform: translateZ(25px); }
+@media(max-width: 768px) { .action-group { flex-direction: column; gap: 10px; } .action-group .btn { margin-top: 0; } }
+
+/* Terminals & Results */
+.terminal-box { margin-top: 20px; background: rgba(0,0,0,0.9); border: 1px solid var(--text-muted); padding: 25px; font-family: 'Gali', var(--font-mono), sans-serif; font-size: 1.4rem; color: var(--neon-green); min-height: 140px; word-break: break-word; white-space: pre-wrap; line-height: 1.8; transition: all 0.5s; transform: translateZ(15px); box-shadow: inset 0 0 20px rgba(0,255,102,0.05); }
+.terminal-box.empty { color: var(--text-muted); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-style: italic; font-size: 1rem; box-shadow: none; }
+
+.dl-box { display: none; margin-top: 20px; border: 1px dashed var(--neon-purple); background: rgba(176, 38, 255, 0.08); padding: 25px; flex-direction: column; gap: 15px; align-items: center; transition: all 0.5s; transform: translateZ(20px); }
+.dl-box.active { display: flex; }
+.dl-info { color: var(--neon-cyan); font-family: var(--font-mono); font-size: 1.1rem; font-weight: bold; text-align: center; }
+
+.burn-effect { animation: burnMelt 2s forwards; pointer-events: none; }
+@keyframes burnMelt { 0% { filter: brightness(1) sepia(0) hue-rotate(0); transform: scale(1) skewX(0); } 20% { filter: brightness(2) sepia(1) hue-rotate(-50deg) blur(2px); transform: scale(1.02) skewX(2deg); color: #ff0000; } 80% { opacity: 1; filter: brightness(0.5) sepia(1) hue-rotate(-50deg) blur(10px); transform: scale(0.9) translateY(20px); } 100% { opacity: 0; filter: blur(20px); transform: scale(0.5) translateY(50px); display: none; } }
+
+/* Cinematic Dossier Preview */
+.dossier-preview { display: none; width: 100%; border: 3px solid #4a3311; background: #e3d2a4; margin-top: 20px; transform: translateZ(20px); box-shadow: 0 0 30px rgba(227, 210, 164, 0.2); }
+.dossier-preview.active { display: block; }
+
+/* Overlays (Unified Fullscreen Blurs) */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 8000; display: flex; justify-content: center; align-items: center; flex-direction: column; opacity: 0; pointer-events: none; transition: 0.3s; backdrop-filter: blur(15px); }
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+.modal-content { background: var(--bg-core); border: 2px solid var(--neon-cyan); width: 100%; max-width: 550px; padding: 50px; box-shadow: 0 0 50px rgba(0, 243, 255, 0.15); transform: translateY(50px); transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; max-height: 90vh; overflow-y: auto; }
+.modal-overlay.active .modal-content { transform: translateY(0); }
+.modal-close { position: absolute; top: 15px; left: 20px; background: none; border: none; color: var(--text-muted); font-size: 2.5rem; cursor: pointer; transition: 0.3s; font-family: var(--font-mono); }
+html[dir="ltr"] .modal-close { left: auto; right: 20px; }
+.modal-close:hover { color: var(--neon-red); transform: scale(1.1); }
+.modal-title { font-family: 'Sayaf-Heavy', var(--font-mono), sans-serif; font-size: 3rem; color: var(--neon-cyan); margin-bottom: 30px; border-bottom: 1px dashed var(--text-muted); padding-bottom: 20px; text-align: center; }
+
+/* Progress Blur Overlay (For Upload/Download) */
+#progressOverlay .modal-content { border-color: var(--neon-purple); background: transparent; border: none; box-shadow: none; max-width: 800px; }
+.prog-stats { display: flex; justify-content: space-between; align-items: flex-end; font-family: var(--font-mono); font-size: 1.5rem; color: var(--neon-purple); margin-bottom: 15px; }
+.prog-track { height: 12px; background: rgba(176, 38, 255, 0.1); border-radius: 6px; overflow: hidden; width: 100%; }
+.prog-fill { height: 100%; width: 0%; background: var(--neon-purple); box-shadow: 0 0 30px var(--neon-purple); transition: width 0.3s ease; }
+
+.overlay-text { font-family: 'Sayaf-Heavy', var(--font-mono), sans-serif; font-size: 4.5rem; color: var(--neon-cyan); text-shadow: 0 0 40px var(--neon-cyan); letter-spacing: 4px; animation: pulseText 1.2s infinite alternate; text-align: center; }
+@keyframes pulseText { 0% { opacity: 0.4; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1.05); } }
+
+/* Info Section Styling */
+.info-section { margin-bottom: 35px; border-right: 4px solid var(--text-muted); padding-right: 15px; }
+html[dir="ltr"] .info-section { border-right: none; border-left: 4px solid var(--text-muted); padding-right: 0; padding-left: 15px; }
+.info-section h4 { font-family: 'Sayaf-Heavy', var(--font-mono), sans-serif; color: var(--neon-cyan); font-size: 2rem; margin-bottom: 15px; letter-spacing: 1px; }
+.info-section p { font-family: 'Methlama-Regular', sans-serif; color: var(--text-main); font-size: 1.3rem; line-height: 1.8; }
+.info-section ul { padding-inline-start: 25px; margin-top: 15px; color: var(--text-main); font-family: 'Methlama-Regular', sans-serif; font-size: 1.2rem; }
+.info-section li { margin-bottom: 10px; }
+
+#toast-container { position: fixed; bottom: 40px; right: 40px; z-index: 9000; display: flex; flex-direction: column; gap: 15px; pointer-events: none; }
+.toast { background: rgba(10,10,16,0.98); border-right: 4px solid var(--neon-cyan); color: var(--text-main); padding: 20px 30px; font-family: 'Methlama-Regular', sans-serif; font-size: 1.4rem; box-shadow: 0 0 30px rgba(0,0,0,0.9); opacity: 0; transform: translateX(50px); transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); backdrop-filter: blur(10px); pointer-events: all; }
+html[dir="ltr"] .toast { border-right: none; border-left: 4px solid var(--neon-cyan); transform: translateX(-50px); }
+.toast.show { opacity: 1; transform: translateX(0); }
+.toast.error { border-color: var(--neon-red); color: var(--neon-red); }
+.toast.success { border-color: var(--neon-green); color: var(--neon-green); }
+.toast.burn { border-color: var(--neon-red); color: #fff; background: rgba(255,0,0,0.25); }
+</style>
+</head>
+<body dir="rtl">
+
+<svg style="display: none;">
+  <filter id="glitch-vfx">
+    <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="2" result="noise" id="vfx-turbulence" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G" id="vfx-displacement" />
+  </filter>
+</svg>
+
+<div class="cyber-grid"></div>
+<div class="vignette"></div>
+<div class="scanlines"></div>
+
+<div id="sysOverlay" class="modal-overlay"><div class="overlay-text" id="overlayText">جاري المعالجة...</div></div>
+<div id="toast-container"></div>
+<canvas id="hiddenCanvas" style="display:none"></canvas>
+<canvas id="dossierCanvas" style="display:none"></canvas>
+
+<!-- Universal Progress Overlay (Upload/Download) -->
+<div id="progressOverlay" class="modal-overlay">
+  <div class="modal-content">
+    <h3 class="modal-title lang-txt" id="progOverlayTitle" data-ar="جاري نقل البيانات للشبكة..." data-en="TRANSMITTING DATA...">جاري نقل البيانات للشبكة...</h3>
+    <div class="prog-stats">
+        <span id="progOverlayMb">0.00 / 0.00 MB</span>
+        <span id="progOverlayPct" style="color: var(--neon-purple); font-weight: bold; font-size: 2rem;">0%</span>
+    </div>
+    <div class="prog-track">
+        <div class="prog-fill" id="progOverlayFill"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Universal Extract/Export Modal -->
+<div id="modalOverlay" class="modal-overlay">
+  <div class="modal-content">
+    <button class="modal-close" data-close="modalOverlay">×</button>
+    <h3 class="modal-title lang-txt" data-ar="إعدادات الحفظ والإخراج" data-en="OUTPUT EXPORT SETTINGS">إعدادات الحفظ والإخراج</h3>
+    <label class="lang-txt" data-ar="اسم الملف (بدون صيغة)" data-en="Filename (Without Extension)">اسم الملف (بدون صيغة)</label>
+    <input type="text" id="dlFileName" value="STEALTH_ARTIFACT">
+    <div id="dlFormatWrapper">
+      <label class="lang-txt" data-ar="صيغة الإخراج (يفضل PNG حصراً لعدم ضياع التشفير)" data-en="Output Format (PNG Highly Recommended)">صيغة الإخراج (يفضل PNG حصراً لعدم ضياع التشفير)</label>
+      <select id="dlFormat"><option value="image/png">PNG (Lossless)</option><option value="image/webp">WEBP</option></select>
+    </div>
+    <button class="btn success lang-txt" id="modalConfirmDlBtn" data-ar="اختيار مسار الحفظ (SAVE)" data-en="SELECT SAVE LOCATION">اختيار مسار الحفظ (SAVE)</button>
+  </div>
+</div>
+
+<!-- Info Intelligence Modal -->
+<div id="infoModalOverlay" class="modal-overlay">
+  <div class="modal-content" style="max-width: 900px;">
+    <button class="modal-close" data-close="infoModalOverlay">×</button>
+    <h3 class="modal-title lang-txt" data-ar="الدليل الاستخباراتي للنظام" data-en="SYSTEM INTELLIGENCE MANUAL">الدليل الاستخباراتي للنظام</h3>
+    
+    <!-- Arabic Info -->
+    <div id="infoAr" style="display:block;">
+        <div class="info-section" style="border-color: var(--neon-cyan);">
+            <h4 style="color: var(--neon-cyan);">[SYS_01]: تغليف الصور</h4>
+            <p>إخفاء أي <span style="color: var(--neon-cyan);">نص سري</span> أو <span style="color: var(--neon-cyan);">ملف ضخم</span> داخل بكسلات صورة الغطاء بصيغة (PNG/JPG). يجب حفظ الناتج بصيغة <span style="color: var(--neon-purple);">PNG حصراً</span> لضمان عدم ضياع التشفير. عند فك التشفير، ستتولد "بطاقة استخبارات المطلوبين" تحمل بيانات الملف المخفي.</p>
+        </div>
+        <div class="info-section" style="border-color: var(--neon-purple);">
+            <h4 style="color: var(--neon-purple);">[SYS_02]: الإخفاء الصوتي</h4>
+            <p>ارفع أي ملف صوتي بأي صيغة (MP3, OGG, إلخ..) وسيقوم النظام <span style="color: var(--neon-purple);">بتحويله تلقائياً لصيغة WAV النقية</span>. سيتم بعد ذلك حقن النصوص أو الملفات داخل الترددات الصغرى (LSB) للصوت. النتيجة: ملف صوتي يعمل بشكل طبيعي، ولا يمكن لأي أذن بشرية تمييز التشفير بداخله.</p>
+        </div>
+        <div class="info-section" style="border-color: var(--neon-green);">
+            <h4 style="color: var(--neon-green);">[SYS_03]: محطة راديو مورس</h4>
+            <p>ترجمة النصوص إلى ذبذبات مورس الكلاسيكية مع خيار <span style="color: var(--neon-green);">بثها صوتياً</span> أو تحميلها كملف WAV. <br>المحطة قادرة أيضاً على قراءة ملفات الصوت المرفوعة وتحليل موجاتها لاستخراج نبضات مورس منها تلقائياً وفك شفرتها. تأكد من تحديد <span style="color: var(--neon-red);">لغة الشفرة الصحيحة</span> لتفادي تداخل الحروف.</p>
+        </div>
+        <div class="info-section" style="border-color: var(--neon-red);">
+            <h4 style="color: var(--neon-red);">[SYS_04]: الإتلاف الجذري للمصفوفات</h4>
+            <p>نظام تحكم كامل في بنية الملفات الفيزيائية بدمج (كلمة السر + ملف مفتاح الأمان):</p>
+            <ul>
+                <li><span style="color: var(--neon-cyan);">إتلاف (CORRUPT):</span> تشفير الملف وتغيير بنيته، لا يمكن فتحه إلا بالرمز الصحيح.</li>
+                <li><span style="color: var(--neon-green);">استرجاع (RESTORE):</span> فك التشفير عن الملف المتلف مسبقاً لاستعادته.</li>
+                <li><span style="color: var(--neon-red);">تدمير (DESTROY):</span> كتابة بيانات عشوائية تماماً فوق بنية الملف. <b>النتيجة:</b> ملف ميت رياضياً لا يمكن لأي كائن استرجاعه حتى بوجود كلمة السر الأصلية.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- English Info -->
+    <div id="infoEn" style="display:none;">
+        <div class="info-section" style="border-color: var(--neon-cyan);">
+            <h4 style="color: var(--neon-cyan);">[SYS_01]: IMG STEGO</h4>
+            <p>Hide any <span style="color: var(--neon-cyan);">secret text</span> or <span style="color: var(--neon-cyan);">heavy file</span> inside the pixels of a Cover Image (PNG/JPG). You MUST export the result as <span style="color: var(--neon-purple);">PNG format</span> to prevent data loss. Decryption generates a cinematic Wanted Intelligence Dossier.</p>
+        </div>
+        <div class="info-section" style="border-color: var(--neon-purple);">
+            <h4 style="color: var(--neon-purple);">[SYS_02]: AUDIO STEGO</h4>
+            <p>Upload ANY audio format (MP3, OGG, etc.). The core <span style="color: var(--neon-purple);">auto-converts it to pure WAV format</span>, then injects text or files into the Least Significant Bits (LSB) of the audio frequencies. The resulting audio plays normally, perfectly inaudible to human ears.</p>
+        </div>
+        <div class="info-section" style="border-color: var(--neon-green);">
+            <h4 style="color: var(--neon-green);">[SYS_03]: RADIO MORSE</h4>
+            <p>Translate text to classic Morse pulses with the ability to <span style="color: var(--neon-green);">broadcast acoustically</span> or download as a WAV file. It can also analyze uploaded audio waves to extract and decode Morse pulses automatically. Ensure the <span style="color: var(--neon-red);">Language Dictionary</span> is set correctly to avoid pulse collisions.</p>
+        </div>
+        <div class="info-section" style="border-color: var(--neon-red);">
+            <h4 style="color: var(--neon-red);">[SYS_04]: ABSOLUTE KILL MATRIX</h4>
+            <p>Total physical byte control using XOR combinations of (Text Password + Physical Key File):</p>
+            <ul>
+                <li><span style="color: var(--neon-cyan);">CORRUPT:</span> Scrambles file bytes. Can only be restored with the exact key.</li>
+                <li><span style="color: var(--neon-green);">RESTORE:</span> Unlocks a previously corrupted file back to its original state.</li>
+                <li><span style="color: var(--neon-red);">DESTROY:</span> Overwrites the file matrix with absolute random noise. <b>Result:</b> A mathematically dead file, impossible to recover ever again.</li>
+            </ul>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" id="main-wrap">
+  <header>
+    <div class="header-actions">
+        <button class="top-btn" id="langBtn">EN</button>
+        <button class="top-btn" id="infoBtn">INFO</button>
+    </div>
+    <div class="sys-title">MORHAF STEALTH</div>
+    <div class="sys-sub lang-txt" data-ar="محرك التشفير السيبراني الشامل - النواة 3.1" data-en="Ultimate Cybernetic Encryption Engine - Core V3.1">محرك التشفير السيبراني الشامل - النواة 3.1</div>
+  </header>
+
+  <nav class="sys-nav">
+    <button class="nav-btn active lang-txt" data-target="stegoSys" data-ar="SYS_01: تغليف الصور" data-en="SYS_01: IMG STEGO">SYS_01: تغليف الصور</button>
+    <button class="nav-btn lang-txt" data-target="audioStegoSys" data-ar="SYS_02: الإخفاء الصوتي" data-en="SYS_02: AUDIO STEGO">SYS_02: الإخفاء الصوتي</button>
+    <button class="nav-btn lang-txt" data-target="morseSys" data-ar="SYS_03: راديو مورس" data-en="SYS_03: RADIO MORSE">SYS_03: راديو مورس</button>
+    <button class="nav-btn lang-txt" data-target="corruptSys" data-ar="SYS_04: الإتلاف الجذري" data-en="SYS_04: ABSOLUTE KILL">SYS_04: الإتلاف الجذري</button>
+  </nav>
+
+  <!-- ==================== [SYS_01]: IMG STEGANOGRAPHY ==================== -->
+  <main id="stegoSys" class="system-view active dual-grid">
+    <div class="cyber-panel">
+      <div class="panel-glare"></div>
+      <div class="panel-title"><span class="lang-txt" data-ar="تشفير البيانات" data-en="ENCRYPT NODE">تشفير البيانات</span> <span>[ENCRYPT]</span></div>
+      
+      <label class="lang-txt" data-ar="صورة الغطاء [PNG/JPG]" data-en="COVER_IMAGE [PNG/JPG]">صورة الغطاء [PNG/JPG]</label>
+      <div class="dropzone" id="encCoverDropzone"><input type="file" id="encCoverInput" accept="image/png, image/jpeg, image/webp"><div class="dz-icon">👁️</div><div class="dz-text lang-txt" data-ar="اسحب الصورة هنا" data-en="Drop Image Here">اسحب الصورة هنا</div><div class="dz-filename" id="encCoverName"></div></div>
+      <div class="preview-box" id="encCoverPreviewBox"><img id="encCoverImg" alt="cover"></div>
+      
+      <label class="lang-txt" data-ar="الملف السري [أي صيغة]" data-en="PAYLOAD_FILE [ANY FORMAT]">الملف السري [أي صيغة]</label>
+      <div class="dropzone" id="encPayloadDropzone"><input type="file" id="encPayloadInput"><div class="dz-icon">📦</div><div class="dz-text lang-txt" data-ar="اسحب الملف هنا" data-en="Drop File Here">اسحب الملف هنا</div><div class="dz-filename" id="encPayloadName"></div></div>
+      
+      <label class="lang-txt" data-ar="النص السري" data-en="SECRET_TEXT">النص السري</label>
+      <textarea id="encMessage" class="lang-ph" data-ar="اكتب رسالتك السرية هنا..." data-en="Input classified text..."></textarea>
+      
+      <label class="lang-txt" data-ar="مفتاح التشفير [نص / ملف]" data-en="ENCRYPTION_KEY [TEXT / FILE]">مفتاح التشفير [نص / ملف]</label>
+      <div class="crypto-key-group">
+        <div class="pass-wrap"><input type="password" id="encPassword" class="password-field" placeholder="••••••••"><button type="button" class="toggle-pass" data-target="encPassword">👁</button></div>
+        <div class="file-key-btn" id="encFileKeyBtn" title="Upload Physical Key File">🗝️<input type="file" id="encFileKeyInput"></div>
+      </div>
+      <button class="btn pulse lang-txt" id="encryptBtn" data-ar="تشفير وتغليف" data-en="EXECUTE ENCRYPTION">تشفير وتغليف</button>
+    </div>
+
+    <div class="cyber-panel">
+      <div class="panel-glare"></div>
+      <div class="panel-title"><span class="lang-txt" data-ar="فك التشفير" data-en="DECRYPT NODE">فك التشفير</span> <span>[DECRYPT]</span></div>
+      
+      <label class="lang-txt" data-ar="الصورة المختومة" data-en="ENCRYPTED_ARTIFACT">الصورة المختومة</label>
+      <div class="dropzone" id="decDropzone"><input type="file" id="decFileInput" accept="image/png, image/jpeg, image/webp"><div class="dz-icon">🔍</div><div class="dz-text lang-txt" data-ar="اسحب الصورة هنا" data-en="Drop Encrypted Image">اسحب الصورة هنا</div><div class="dz-filename" id="decFileName"></div></div>
+      <div class="preview-box" id="decPreviewBox"><img id="decPreviewImg" alt="encrypted"></div>
+      
+      <label class="lang-txt" data-ar="مفتاح فك التشفير [نص / ملف]" data-en="DECRYPTION_KEY [TEXT / FILE]">مفتاح فك التشفير [نص / ملف]</label>
+      <div class="crypto-key-group">
+        <div class="pass-wrap"><input type="password" id="decPassword" class="password-field" placeholder="••••••••"><button type="button" class="toggle-pass" data-target="decPassword">👁</button></div>
+        <div class="file-key-btn" id="decFileKeyBtn" title="Upload Physical Key File">🗝️<input type="file" id="decFileKeyInput"></div>
+      </div>
+      <button class="btn lang-txt" id="decryptBtn" data-ar="تحليل واستخراج" data-en="ANALYZE & EXTRACT">تحليل واستخراج</button>
+      
+      <div id="decryptResultsWrapper">
+        <label class="lang-txt" data-ar="البيانات المستخرجة" data-en="EXTRACTED_DATA">البيانات المستخرجة</label>
+        <div class="terminal-box empty lang-txt" id="decResult" data-ar="_لا يوجد نص سري_" data-en="_WAITING_FOR_DATA_">_لا يوجد نص سري_</div>
+        <div class="dl-box" id="decFileBox"><span class="dl-info" id="decFileInfo">FILE.EXT</span><button class="btn success small lang-txt" id="decFileDlBtn" data-ar="تحميل مباشر للملف" data-en="DIRECT DOWNLOAD">تحميل مباشر للملف</button></div>
+        <img id="dossierPreviewImg" class="dossier-preview" alt="Dossier">
+        <button class="btn small lang-txt" id="dlDossierBtn" style="display:none; margin-top:15px; width:100%;" data-ar="تحميل بطاقة الاستخبارات (WANTED)" data-en="DOWNLOAD DOSSIER">تحميل بطاقة الاستخبارات (WANTED)</button>
+        <button class="btn danger small lang-txt" id="burnProtocolBtn" style="display:none; margin-top:15px; width:100%;" data-ar="تدمير البيانات (Burn Protocol)" data-en="INITIATE BURN PROTOCOL">تدمير البيانات (Burn Protocol)</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== [SYS_02]: AUDIO STEGANOGRAPHY ==================== -->
+  <main id="audioStegoSys" class="system-view dual-grid">
+    <div class="cyber-panel">
+      <div class="panel-glare"></div>
+      <div class="panel-title"><span class="lang-txt" data-ar="التغليف الصوتي" data-en="AUDIO ENCRYPT">التغليف الصوتي</span> <span>[WAV LSB]</span></div>
+      
+      <label class="lang-txt" data-ar="ملف الصوت الأساسي [أي صيغة]" data-en="COVER_AUDIO [ANY FORMAT]">ملف الصوت الأساسي [أي صيغة]</label>
+      <div class="dropzone" id="audCoverDropzone"><input type="file" id="audCoverInput" accept="audio/*"><div class="dz-icon">🎵</div><div class="dz-text lang-txt" data-ar="اسحب الملف الصوتي هنا" data-en="Drop Audio File">اسحب الملف الصوتي هنا</div><div class="dz-filename" id="audCoverName"></div></div>
+      
+      <label class="lang-txt" data-ar="الملف السري [أي صيغة]" data-en="PAYLOAD_FILE [ANY FORMAT]">الملف السري [أي صيغة]</label>
+      <div class="dropzone" id="audPayloadDropzone"><input type="file" id="audPayloadInput"><div class="dz-icon">📦</div><div class="dz-text lang-txt" data-ar="اسحب الملف السري هنا" data-en="Drop Secret File Here">اسحب الملف السري هنا</div><div class="dz-filename" id="audPayloadName"></div></div>
+      
+      <label class="lang-txt" data-ar="النص السري للإخفاء" data-en="SECRET_TEXT">النص السري للإخفاء</label>
+      <textarea id="audMessage" class="lang-ph" data-ar="اكتب رسالتك السرية هنا..." data-en="Input classified text..."></textarea>
+      
+      <label class="lang-txt" data-ar="مفتاح التشفير [نص / ملف]" data-en="ENCRYPTION_KEY [TEXT / FILE]">مفتاح التشفير [نص / ملف]</label>
+      <div class="crypto-key-group">
+        <div class="pass-wrap"><input type="password" id="audEncPassword" class="password-field" placeholder="••••••••"><button type="button" class="toggle-pass" data-target="audEncPassword">👁</button></div>
+        <div class="file-key-btn" id="audEncFileKeyBtn" title="Upload Physical Key File">🗝️<input type="file" id="audEncFileKeyInput"></div>
+      </div>
+      <button class="btn pulse lang-txt" id="audEncryptBtn" data-ar="دمج وتوليد مقطع WAV" data-en="ENCODE & GENERATE WAV">دمج وتوليد مقطع WAV</button>
+    </div>
+
+    <div class="cyber-panel">
+      <div class="panel-glare"></div>
+      <div class="panel-title"><span class="lang-txt" data-ar="فك الأختام الصوتية" data-en="AUDIO DECRYPT">فك الأختام الصوتية</span> <span>[WAV EXTRACT]</span></div>
+      
+      <label class="lang-txt" data-ar="الملف الصوتي المشفر [WAV حصراً]" data-en="ENCRYPTED_AUDIO [STRICTLY WAV]">الملف الصوتي المشفر [WAV حصراً]</label>
+      <div class="dropzone" id="audDecDropzone"><input type="file" id="audDecInput" accept="audio/wav"><div class="dz-icon">🎧</div><div class="dz-text lang-txt" data-ar="اسحب المقطع المشفر هنا" data-en="Drop Encrypted WAV">اسحب المقطع المشفر هنا</div><div class="dz-filename" id="audDecName"></div></div>
+      
+      <label class="lang-txt" data-ar="مفتاح فك التشفير [نص / ملف]" data-en="DECRYPTION_KEY [TEXT / FILE]">مفتاح فك التشفير [نص / ملف]</label>
+      <div class="crypto-key-group">
+        <div class="pass-wrap"><input type="password" id="audDecPassword" class="password-field" placeholder="••••••••"><button type="button" class="toggle-pass" data-target="audDecPassword">👁</button></div>
+        <div class="file-key-btn" id="audDecFileKeyBtn" title="Upload Physical Key File">🗝️<input type="file" id="audDecFileKeyInput"></div>
+      </div>
+      <button class="btn lang-txt" id="audDecryptBtn" data-ar="تحليل الترددات واستخراج" data-en="ANALYZE & EXTRACT">تحليل الترددات واستخراج</button>
+      
+      <div id="audDecryptResultsWrapper">
+        <label class="lang-txt" data-ar="البيانات المستخرجة" data-en="EXTRACTED_DATA">البيانات المستخرجة</label>
+        <div class="terminal-box empty lang-txt" id="audDecResult" data-ar="_لا يوجد نص سري_" data-en="_WAITING_FOR_DATA_">_لا يوجد نص سري_</div>
+        <div class="dl-box" id="audDecFileBox"><span class="dl-info" id="audDecFileInfo">FILE.EXT</span><button class="btn success small lang-txt" id="audDecFileDlBtn" data-ar="تحميل مباشر للملف" data-en="DIRECT DOWNLOAD">تحميل مباشر للملف</button></div>
+        <img id="audDossierPreviewImg" class="dossier-preview" alt="Dossier">
+        <button class="btn small lang-txt" id="audDlDossierBtn" style="display:none; margin-top:15px; width:100%;" data-ar="تحميل بطاقة الاستخبارات (WANTED)" data-en="DOWNLOAD DOSSIER">تحميل بطاقة الاستخبارات (WANTED)</button>
+        <button class="btn danger small lang-txt" id="audBurnProtocolBtn" style="display:none; margin-top:15px; width:100%;" data-ar="تدمير البيانات (Burn Protocol)" data-en="INITIATE BURN PROTOCOL">تدمير البيانات (Burn Protocol)</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== [SYS_03]: RADIO MORSE TRANSMITTER ==================== -->
+  <main id="morseSys" class="system-view single-grid">
+    <div class="cyber-panel">
+      <div class="panel-glare"></div>
+      <div class="panel-title"><span class="lang-txt" data-ar="محطة راديو مورس" data-en="RADIO MORSE TRANSMITTER">محطة راديو مورس</span> <span>[TX/RX]</span></div>
+      
+      <div style="margin-bottom: 20px;">
+        <label class="lang-txt" data-ar="لغة الشفرة (لتفادي تداخل الترددات)" data-en="MORSE LANGUAGE DICTIONARY">لغة الشفرة (لتفادي تداخل الترددات)</label>
+        <select id="morseLangSelect">
+          <option value="en">English (EN)</option>
+          <option value="ar">عربي (AR)</option>
+        </select>
+      </div>
+
+      <label class="lang-txt" data-ar="إدخال النص أو شفرة مورس" data-en="TEXT OR MORSE INPUT">إدخال النص أو شفرة مورس</label>
+      <textarea id="morseInput" class="lang-ph" data-ar="اكتب النص للتشفير، أو أدخل الشفرة (بصيغة . و -) لفكها..." data-en="Enter Text to encode, or Morse (. and -) to decode..."></textarea>
+
+      <div class="action-group">
+        <button class="btn lang-txt" id="morseEncodeBtn" data-ar="تشفير إلى مورس" data-en="ENCODE TO MORSE">تشفير إلى مورس</button>
+        <button class="btn lang-txt" id="morseDecodeBtn" data-ar="فك شفرة مورس" data-en="DECODE MORSE">فك شفرة مورس</button>
+      </div>
+
+      <div class="terminal-box empty" id="morseResult" style="font-family: var(--font-mono); direction: ltr;">_AWAITING_SIGNAL_</div>
+      
+      <div class="action-group" id="morseAudioGroup" style="display:none; margin-top:20px;">
+        <button class="btn success small lang-txt" id="morsePlayBtn" data-ar="معاينة الشفرة صوتياً (PREVIEW)" data-en="PREVIEW SIGNAL (PLAY)">معاينة الشفرة صوتياً (PREVIEW)</button>
+        <button class="btn small lang-txt" id="morseExportBtn" data-ar="تحميل كملف WAV" data-en="EXPORT TO WAV">تحميل كملف WAV</button>
+      </div>
+      
+      <hr style="border:0; border-bottom:1px dashed var(--text-muted); margin: 30px 0;">
+      
+      <label class="lang-txt" data-ar="فك شفرة مورس من ملف صوتي (WAV/MP3/OGG)" data-en="DECODE MORSE FROM AUDIO FILE (WAV/MP3/OGG)">فك شفرة مورس من ملف صوتي (WAV/MP3/OGG)</label>
+      <div class="dropzone" id="morseAudioDropzone"><input type="file" id="morseAudioInput" accept="audio/*"><div class="dz-icon">📻</div><div class="dz-text lang-txt" data-ar="اسحب الملف الصوتي هنا للتحليل" data-en="Drop Audio File Here to Analyze">اسحب الملف الصوتي هنا للتحليل</div><div class="dz-filename" id="morseAudioName"></div></div>
+    </div>
+  </main>
+
+  <!-- ==================== [SYS_04]: ABSOLUTE KILL MATRIX ==================== -->
+  <main id="corruptSys" class="system-view single-grid">
+    <div class="cyber-panel">
+      <div class="panel-glare"></div>
+      <div class="panel-title"><span class="lang-txt" data-ar="الإتلاف الجذري للمصفوفات" data-en="ABSOLUTE KILL MATRIX">الإتلاف الجذري للمصفوفات</span> <span>[CORRUPT/WIPE]</span></div>
+      
+      <label class="lang-txt" data-ar="الملف المستهدف [أي صيغة]" data-en="TARGET_ARTIFACT [ANY_FORMAT]">الملف المستهدف [أي صيغة]</label>
+      <div class="dropzone" id="corrDropzone" style="margin-bottom: 30px;"><input type="file" id="corrFileInput"><div class="dz-icon">☠️</div><div class="dz-text lang-txt" data-ar="اسحب الملف هنا" data-en="Drop File Here">اسحب الملف هنا</div><div class="dz-filename" id="corrFileName"></div></div>
+
+      <label class="lang-txt" data-ar="مفتاح التشفير الجذري [نص / ملف]" data-en="CRYPTOGRAPHIC_KEY [TEXT / FILE]">مفتاح التشفير الجذري [نص / ملف]</label>
+      <div class="crypto-key-group">
+        <div class="pass-wrap"><input type="password" id="corrPassword" class="password-field" placeholder="••••••••"><button type="button" class="toggle-pass" data-target="corrPassword">👁</button></div>
+        <div class="file-key-btn" id="corrFileKeyBtn" title="Upload Physical Key File">🗝️<input type="file" id="corrFileKeyInput"></div>
+      </div>
+
+      <div class="action-group">
+        <button class="btn success lang-txt" id="restoreActionBtn" data-ar="استرجاع الملف (RESTORE)" data-en="RESTORE MATRIX">استرجاع الملف (RESTORE)</button>
+        <button class="btn lang-txt" id="corruptActionBtn" data-ar="إتلاف الملف (CORRUPT)" data-en="CORRUPT MATRIX">إتلاف الملف (CORRUPT)</button>
+        <button class="btn danger lang-txt" id="destroyActionBtn" data-ar="تدمير نهائي (DESTROY)" data-en="ABSOLUTE DESTROY">تدمير نهائي (DESTROY)</button>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxQtDThKLQ704BaG1ogUB2m2zh5PPfDxKns8UITXOGACgnyTbnlhnHdJyTOOaAsAvn4/exec"; 
+  const WORKER_URL = "https://lingering-flower-db63.morhaf-ali-5r.workers.dev/"; 
+
+  /* ============ DYNAMIC SPATIAL AUDIO & VFX ENGINE ============ */
+  const AudioEngine = (function() {
+    let ctx = null, droneOsc = null, droneGain = null, lpf = null, dist = null, crackle = null, isPlaying = false;
+    function init() { if(!ctx) { ctx = new (window.AudioContext || window.webkitAudioContext)(); setupAmbient(); } if(ctx.state === 'suspended') ctx.resume(); }
+    
+    function setupAmbient() {
+        droneOsc = ctx.createOscillator(); droneOsc.type = 'triangle'; droneOsc.frequency.value = 65.41; 
+        droneGain = ctx.createGain(); droneGain.gain.value = 0.015;
+        lpf = ctx.createBiquadFilter(); lpf.type = 'lowpass'; lpf.frequency.value = 400;
+        dist = ctx.createWaveShaper(); dist.curve = makeDistortionCurve(0);
+        
+        const bufferSize = ctx.sampleRate * 2; const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for(let i=0; i<bufferSize; i++) { data[i] = Math.random() > 0.999 ? (Math.random()*2-1)*0.3 : (Math.random()*2-1)*0.008; }
+        crackle = ctx.createBufferSource(); crackle.buffer = buffer; crackle.loop = true;
+        const crackleGain = ctx.createGain(); crackleGain.gain.value = 0.05;
+
+        droneOsc.connect(dist); dist.connect(lpf); lpf.connect(droneGain); droneGain.connect(ctx.destination);
+        crackle.connect(crackleGain); crackleGain.connect(ctx.destination);
+        
+        droneOsc.start(); crackle.start(); isPlaying = true;
+    }
+    
+    function makeDistortionCurve(amount) {
+        const k = typeof amount === 'number' ? amount : 50, n_samples = 44100, curve = new Float32Array(n_samples), deg = Math.PI / 180;
+        for (let i = 0; i < n_samples; ++i ) { const x = i * 2 / n_samples - 1; curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) ); }
+        return curve;
+    }
+
+    return {
+      ctx: () => { init(); return ctx; },
+      interact: () => { init(); },
+      beep: () => { init(); const o = ctx.createOscillator(); const g = ctx.createGain(); o.type = 'square'; o.frequency.setValueAtTime(800, ctx.currentTime); g.gain.setValueAtTime(0.05, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1); o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.1); },
+      error: () => { init(); const o = ctx.createOscillator(); const g = ctx.createGain(); o.type = 'sawtooth'; o.frequency.setValueAtTime(100, ctx.currentTime); g.gain.setValueAtTime(0.1, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4); o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.4); },
+      success: () => { init(); const o = ctx.createOscillator(); const g = ctx.createGain(); o.type = 'sine'; o.frequency.setValueAtTime(1200, ctx.currentTime); o.frequency.setValueAtTime(1800, ctx.currentTime + 0.1); g.gain.setValueAtTime(0.05, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5); o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.5); },
+      scan: () => { init(); const o = ctx.createOscillator(); const g = ctx.createGain(); o.type = 'sawtooth'; o.frequency.setValueAtTime(200, ctx.currentTime); o.frequency.linearRampToValueAtTime(1000, ctx.currentTime + 0.3); g.gain.setValueAtTime(0.02, ctx.currentTime); g.gain.linearRampToValueAtTime(0.001, ctx.currentTime + 0.3); o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.3); },
+      heavyDrop: () => { init(); const o = ctx.createOscillator(); const g = ctx.createGain(); o.type = 'sine'; o.frequency.setValueAtTime(150, ctx.currentTime); o.frequency.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.6); g.gain.setValueAtTime(0.5, ctx.currentTime); g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.6); o.connect(g); g.connect(ctx.destination); o.start(); o.stop(ctx.currentTime + 0.6); },
+      corruptStart: () => { init(); if(!isPlaying) return; lpf.frequency.rampTo(2000, 0.5); dist.curve = makeDistortionCurve(100); },
+      corruptEnd: () => { if(!isPlaying) return; lpf.frequency.rampTo(400, 0.5); dist.curve = makeDistortionCurve(0); },
+      playMorse: (morseStr) => {
+          init(); let time = ctx.currentTime; const dot = 0.08; const dash = dot * 3; const gap = dot; const charGap = dot * 3; const wordGap = dot * 7;
+          for(let i=0; i<morseStr.length; i++) {
+              let c = morseStr[i];
+              if(c === '.' || c === '-') {
+                  const o = ctx.createOscillator(); const g = ctx.createGain();
+                  o.type = 'sine'; o.frequency.value = 650;
+                  g.gain.setValueAtTime(0, time); g.gain.linearRampToValueAtTime(0.1, time + 0.01);
+                  o.connect(g); g.connect(ctx.destination); o.start(time);
+                  let len = (c === '.') ? dot : dash;
+                  g.gain.setValueAtTime(0.1, time + len - 0.01); g.gain.linearRampToValueAtTime(0, time + len);
+                  o.stop(time + len);
+                  time += len + gap;
+              } else if (c === ' ') time += charGap; else if (c === '/') time += wordGap;
+          }
+      },
+      exportMorseWAV: async (morseStr) => {
+          const dot = 0.08; const dash = dot * 3; const gap = dot; const charGap = dot * 3; const wordGap = dot * 7;
+          let totalTime = 0.1;
+          for(let c of morseStr) { if(c==='.') totalTime+=dot+gap; else if(c==='-') totalTime+=dash+gap; else if(c===' ') totalTime+=charGap; else if(c==='/') totalTime+=wordGap; }
+          const offlineCtx = new OfflineAudioContext(1, 44100 * totalTime, 44100);
+          let time = 0.05;
+          for(let c of morseStr) {
+              if(c === '.' || c === '-') {
+                  const o = offlineCtx.createOscillator(); const g = offlineCtx.createGain();
+                  o.type = 'sine'; o.frequency.value = 650;
+                  g.gain.setValueAtTime(0, time); g.gain.linearRampToValueAtTime(0.8, time + 0.01);
+                  o.connect(g); g.connect(offlineCtx.destination); o.start(time);
+                  let len = (c === '.') ? dot : dash;
+                  g.gain.setValueAtTime(0.8, time + len - 0.01); g.gain.linearRampToValueAtTime(0, time + len);
+                  o.stop(time + len);
+                  time += len + gap;
+              } else if (c === ' ') time += charGap; else if (c === '/') time += wordGap;
+          }
+          const renderedBuffer = await offlineCtx.startRendering();
+          return audioBufferToWav(renderedBuffer);
+      }
+    };
+  })();
+
+  function audioBufferToWav(buffer, opt) {
+      opt = opt || {}; const numChannels = buffer.numberOfChannels, sampleRate = buffer.sampleRate, format = opt.float32 ? 3 : 1, bitDepth = format === 3 ? 32 : 16;
+      let result; if (numChannels === 2) result = interleave(buffer.getChannelData(0), buffer.getChannelData(1)); else result = buffer.getChannelData(0);
+      return encodeWAV(result, format, sampleRate, numChannels, bitDepth);
+  }
+  function interleave(inputL, inputR) { const length = inputL.length + inputR.length; const result = new Float32Array(length); let index = 0, inputIndex = 0; while (index < length) { result[index++] = inputL[inputIndex]; result[index++] = inputR[inputIndex]; inputIndex++; } return result; }
+  function writeString(view, offset, string) { for (let i = 0; i < string.length; i++) view.setUint8(offset + i, string.charCodeAt(i)); }
+  function encodeWAV(samples, format, sampleRate, numChannels, bitDepth) {
+      const bytesPerSample = bitDepth / 8; const blockAlign = numChannels * bytesPerSample; const buffer = new ArrayBuffer(44 + samples.length * bytesPerSample); const view = new DataView(buffer);
+      writeString(view, 0, 'RIFF'); view.setUint32(4, 36 + samples.length * bytesPerSample, true); writeString(view, 8, 'WAVE'); writeString(view, 12, 'fmt '); view.setUint32(16, 16, true); view.setUint16(20, format, true); view.setUint16(22, numChannels, true); view.setUint32(24, sampleRate, true); view.setUint32(28, sampleRate * blockAlign, true); view.setUint16(32, blockAlign, true); view.setUint16(34, bitDepth, true); writeString(view, 36, 'data'); view.setUint32(40, samples.length * bytesPerSample, true);
+      if (format === 1) { let offset = 44; for (let i = 0; i < samples.length; i++, offset += 2) { let s = Math.max(-1, Math.min(1, samples[i])); view.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7FFF, true); } } else { let offset = 44; for (let i = 0; i < samples.length; i++, offset += 4) view.setFloat32(offset, samples[i], true); }
+      return new Blob([view], { type: 'audio/wav' });
+  }
+
+  document.body.addEventListener('click', AudioEngine.interact, {once:true});
+
+  document.querySelectorAll('.cyber-panel').forEach(panel => {
+      const glare = panel.querySelector('.panel-glare');
+      panel.addEventListener('mousemove', e => {
+          const rect = panel.getBoundingClientRect();
+          const x = e.clientX - rect.left, y = e.clientY - rect.top;
+          const rx = (y / rect.height - 0.5) * 8; 
+          const ry = (x / rect.width - 0.5) * -8;
+          panel.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.01, 1.01, 1.01)`;
+          if(glare) { glare.style.opacity = '1'; glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0,243,255,0.15), transparent 40%)`; }
+      });
+      panel.addEventListener('mouseleave', () => {
+          panel.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1,1,1)`;
+          if(glare) glare.style.opacity = '0';
+      });
+  });
+
+  function triggerDisplacementVFX(durationMs) {
+      const wrap = document.getElementById('main-wrap');
+      const map = document.getElementById('vfx-displacement');
+      const turb = document.getElementById('vfx-turbulence');
+      wrap.style.filter = 'url(#glitch-vfx)';
+      const start = performance.now();
+      AudioEngine.corruptStart();
+      function animate(time) {
+          const elapsed = time - start;
+          if(elapsed < durationMs) {
+              const intensity = Math.sin((elapsed / durationMs) * Math.PI);
+              map.setAttribute('scale', (intensity * 80).toString());
+              turb.setAttribute('baseFrequency', `${0.02 + Math.random()*0.1} ${0.02 + Math.random()*0.1}`);
+              requestAnimationFrame(animate);
+          } else {
+              wrap.style.filter = 'none'; map.setAttribute('scale', '0'); AudioEngine.corruptEnd();
+          }
+      } requestAnimationFrame(animate);
+  }
+
+  /* ============ STATE & I18N ============ */
+  const textEncoder = new TextEncoder(); const textDecoder = new TextDecoder('utf-8', { fatal: true });
+  const state = { lang: 'ar', keys: { enc:null, dec:null, corr:null, audEnc:null, audDec:null }, payloadCache: {}, modalAction: null, modalDataBlob: null, modalExt: '' };
+  const msgs = {
+    ar: { success: '✅ تمت العملية بنجاح', error: '⚠️ خطأ: ', noImg: 'الملف مطلوب', noKey: 'المفتاح مطلوب', errUpload: 'فشل الرفع للشبكة', errDec: 'فشل الفك / المفتاح خاطئ', noFile: 'الملف مطلوب', burn: 'تم مسح البيانات نهائياً' },
+    en: { success: '✅ SUCCESSFUL', error: '⚠️ ERROR: ', noImg: 'File required', noKey: 'Key required', errUpload: 'Upload failed', errDec: 'Decryption Failed / Wrong Key', noFile: 'File required', burn: 'DATA PURGED' }
+  };
+
+  function toast(keyMsg, type='info', isDirect=false) {
+    if(type === 'error') AudioEngine.error(); else if (type==='success') AudioEngine.success();
+    const str = isDirect ? keyMsg : (msgs[state.lang][keyMsg] || keyMsg);
+    const el = document.createElement('div'); el.className = `toast ${type}`; el.textContent = `[${type.toUpperCase()}] ${str}`;
+    document.getElementById('toast-container').appendChild(el);
+    requestAnimationFrame(()=>el.classList.add('show'));
+    setTimeout(() => { el.classList.remove('show'); setTimeout(()=>el.remove(), 400); }, 4000);
+  }
+
+  function showOverlay(arText, enText) { document.getElementById('overlayText').textContent = state.lang==='ar' ? arText : enText; document.getElementById('sysOverlay').classList.add('active'); AudioEngine.scan(); }
+  function hideOverlay() { document.getElementById('sysOverlay').classList.remove('active'); }
+
+  // Modals & Routing
+  document.getElementById('infoBtn').addEventListener('click', () => { 
+      AudioEngine.beep(); document.getElementById('infoModalOverlay').classList.add('active'); 
+      document.getElementById('infoAr').style.display = state.lang === 'ar' ? 'block' : 'none';
+      document.getElementById('infoEn').style.display = state.lang === 'en' ? 'block' : 'none';
+  });
+  document.querySelectorAll('.modal-close').forEach(btn => { btn.addEventListener('click', () => { AudioEngine.beep(); document.getElementById(btn.dataset.close).classList.remove('active'); }); });
+
+  document.getElementById('langBtn').addEventListener('click', function() { 
+      AudioEngine.beep(); state.lang = state.lang === 'ar' ? 'en' : 'ar'; document.documentElement.dir = state.lang === 'ar' ? 'rtl' : 'ltr'; this.textContent = state.lang === 'ar' ? 'EN' : 'AR'; 
+      document.querySelectorAll('.lang-txt').forEach(el => el.innerHTML = el.getAttribute(`data-${state.lang}`)); 
+      document.querySelectorAll('.lang-ph').forEach(el => el.setAttribute('placeholder', el.getAttribute(`data-${state.lang}`))); 
+      document.getElementById('infoAr').style.display = state.lang === 'ar' ? 'block' : 'none';
+      document.getElementById('infoEn').style.display = state.lang === 'en' ? 'block' : 'none';
+  });
+  
+  document.querySelectorAll('.nav-btn').forEach(btn => { btn.addEventListener('click', () => { AudioEngine.beep(); document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active')); document.querySelectorAll('.system-view').forEach(p => p.classList.remove('active')); btn.classList.add('active'); document.getElementById(btn.dataset.target).classList.add('active'); }); });
+  document.querySelectorAll('.toggle-pass').forEach(btn => { btn.addEventListener('click', () => { AudioEngine.beep(); const t = document.getElementById(btn.dataset.target); if(t.type === 'password'){ t.type = 'text'; btn.textContent = '🙈'; } else { t.type = 'password'; btn.textContent = '👁'; } }); });
+
+  function setupDropzone(id, inputId, onFile) { const z = document.getElementById(id), i = document.getElementById(inputId); z.addEventListener('click', () => { AudioEngine.beep(); i.click(); }); z.addEventListener('dragover', e => { e.preventDefault(); z.classList.add('drag'); }); z.addEventListener('dragleave', e => { e.preventDefault(); z.classList.remove('drag'); }); z.addEventListener('drop', e => { e.preventDefault(); z.classList.remove('drag'); if(e.dataTransfer.files.length) { AudioEngine.beep(); onFile(e.dataTransfer.files[0]); } }); i.addEventListener('change', e => { if(e.target.files.length) onFile(e.target.files[0]); i.value = ''; }); }
+  function setupFileKey(btnId, inputId, stateKeyName) { const b = document.getElementById(btnId), i = document.getElementById(inputId); b.addEventListener('click', () => i.click()); i.addEventListener('change', e => { const f = e.target.files[0]; if(!f) return; const r = new FileReader(); r.onload = ev => { state.keys[stateKeyName] = ev.target.result; b.style.borderColor='var(--neon-purple)'; b.style.color='var(--neon-purple)'; AudioEngine.success(); }; r.readAsArrayBuffer(f); }); }
+  
+  setupFileKey('encFileKeyBtn', 'encFileKeyInput', 'enc'); 
+  setupFileKey('decFileKeyBtn', 'decFileKeyInput', 'dec'); 
+  setupFileKey('corrFileKeyBtn', 'corrFileKeyInput', 'corr');
+  setupFileKey('audEncFileKeyBtn', 'audEncFileKeyInput', 'audEnc');
+  setupFileKey('audDecFileKeyBtn', 'audDecFileKeyInput', 'audDec');
+
+  // SAFE ULTIMATE KEY (With Local 'file://' Fallback fix)
+  async function generateUltimateKey(textPass, fileBuffer) {
+      if(!textPass && !fileBuffer) throw new Error("Missing Key Parameters");
+      let fk = new Uint8Array(32);
+      
+      // Check if crypto.subtle exists (Fails on local file:// in some browsers)
+      if (window.crypto && window.crypto.subtle) {
+          if(textPass) { const pb = textEncoder.encode(textPass); const h = await crypto.subtle.digest('SHA-256', pb); const ha = new Uint8Array(h); for(let i=0; i<32; i++) fk[i] = ha[i]; }
+          if(fileBuffer) { const h = await crypto.subtle.digest('SHA-256', fileBuffer); const ha = new Uint8Array(h); for(let i=0; i<32; i++) { if(textPass) fk[i] ^= ha[i]; else fk[i] = ha[i]; } }
+      } else {
+          // Fallback algorithm for offline / local execution
+          if(textPass) { for(let i=0; i<textPass.length; i++) fk[i%32] ^= textPass.charCodeAt(i); }
+          if(fileBuffer) {
+              const view = new Uint8Array(fileBuffer);
+              for(let i=0; i<view.length; i+=Math.max(1, Math.floor(view.length/2048))) fk[i%32] ^= view[i];
+          }
+      }
+      return fk;
+  }
+
+  function generateDossier(filename, filesizeMB) {
+      const cvs = document.getElementById('dossierCanvas'); cvs.width = 800; cvs.height = 1100; const ctx = cvs.getContext('2d');
+      ctx.fillStyle = '#e3d2a4'; ctx.fillRect(0,0,800,1100); 
+      ctx.strokeStyle = '#4a3311'; ctx.lineWidth = 15; ctx.strokeRect(30,30,740,1040);
+      ctx.fillStyle = '#4a3311'; ctx.font = '900 130px serif'; ctx.textAlign = 'center'; ctx.fillText('WANTED', 400, 180);
+      ctx.font = 'bold 50px serif'; ctx.letterSpacing = '10px'; ctx.fillText('DEAD OR ALIVE', 400, 250);
+      ctx.lineWidth = 5; ctx.strokeRect(100, 300, 600, 400); 
+      ctx.fillStyle = 'rgba(74, 51, 17, 0.1)'; ctx.fillRect(100, 300, 600, 400);
+      ctx.fillStyle = '#4a3311'; ctx.font = 'bold 30px "Share Tech Mono"'; ctx.fillText('TARGET FILE: ' + (filename||'UNKNOWN'), 400, 760);
+      const bounty = filesizeMB ? Math.floor(parseFloat(filesizeMB) * 100000) : Math.floor(Math.random()*1000000);
+      ctx.font = 'bold 80px serif'; ctx.fillText(`$${bounty.toLocaleString()}-`, 400, 920);
+      ctx.font = '30px serif'; ctx.fillText('MARINE HEADQUARTERS', 400, 1020);
+      return cvs.toDataURL('image/jpeg', 0.9);
+  }
+
+  /* ============ SECURE DRIVE UPLOAD (With Fullscreen Blur) ============ */
+  async function uploadToDrive(file) {
+    if(state.payloadCache.file === file) return state.payloadCache.links;
+    
+    const progBox = document.getElementById('progressOverlay');
+    const title = document.getElementById('progOverlayTitle');
+    const fill = document.getElementById('progOverlayFill');
+    const pct = document.getElementById('progOverlayPct');
+    const mb = document.getElementById('progOverlayMb');
+    
+    title.textContent = state.lang === 'ar' ? 'جاري نقل البيانات للشبكة...' : 'TRANSMITTING DATA...';
+    progBox.classList.add('active'); fill.style.width = '0%'; pct.textContent = '0%'; const tMB = (file.size / (1024 * 1024)).toFixed(2); mb.textContent = `0.00 / ${tMB} MB`;
+    
+    try {
+        const auth = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'getUploadUrl', fileName: file.name, mimeType: file.type }) }).then(r=>r.json());
+        if(!auth.uploadUrl) throw new Error("Auth Failed");
+        let start = 0; let fileId = null; const chunk = 20*1024*1024;
+        while(start < file.size) {
+            let end = Math.min(start + chunk, file.size); let c = file.slice(start, end);
+            await new Promise((res, rej) => {
+                const x = new XMLHttpRequest(); x.open('PUT', WORKER_URL, true); x.setRequestHeader('Upload-Url', auth.uploadUrl); x.setRequestHeader('Content-Range', `bytes ${start}-${end - 1}/${file.size}`);
+                x.upload.onprogress = e => { if (e.lengthComputable) { let p = Math.round(((start+e.loaded)/file.size)*100); fill.style.width = p+'%'; pct.textContent = p+'%'; mb.textContent = `${((start+e.loaded)/(1024*1024)).toFixed(2)} / ${tMB} MB`; } };
+                x.onload = () => { if([200,201,308].includes(x.status)){ if(x.status!==308) fileId=JSON.parse(x.responseText).id; res(); } else rej(); }; x.onerror = rej; x.send(c);
+            }); start = end;
+        }
+        const links = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify({ action: 'getPublicLink', fileId: fileId }) }).then(r=>r.json());
+        progBox.classList.remove('active'); state.payloadCache = { file: file, links: {dlLink: links.downloadLink, viewLink: links.viewLink} }; return state.payloadCache.links;
+    } catch(err) { progBox.classList.remove('active'); throw err; }
+  }
+
+  function forceInvisibleDownload(url) { let f = document.getElementById('hidDlFrame'); if(!f){ f = document.createElement('iframe'); f.id = 'hidDlFrame'; f.style.display = 'none'; document.body.appendChild(f); } f.src = url; }
+  function triggerBurnProtocol(wrapId, resBoxId, imgId, btnIds, boxIds) {
+      AudioEngine.scan(); 
+      const wrap = document.getElementById(wrapId); wrap.classList.add('burn-effect');
+      const resBox = document.getElementById(resBoxId);
+      let iv = setInterval(() => { resBox.textContent = resBox.textContent.split('').map(c => Math.random() > 0.5 ? String.fromCharCode(33+Math.random()*90) : c).join(''); }, 50);
+      setTimeout(() => { 
+          clearInterval(iv); wrap.classList.remove('burn-effect'); 
+          btnIds.forEach(id => document.getElementById(id).style.display='none');
+          boxIds.forEach(id => document.getElementById(id).classList.remove('active'));
+          if(imgId) document.getElementById(imgId).src = '';
+          resBox.classList.add('empty'); resBox.textContent = state.lang==='ar'?'_تم مسح البيانات_':'[DATA PURGED]'; 
+          toast('burn', 'burn'); 
+      }, 2000);
+  }
+
+  /* ============ SYS_01: IMG STEGANOGRAPHY ============ */
+  let stegoCoverImg = null, stegoPayloadFile = null;
+  setupDropzone('encCoverDropzone', 'encCoverInput', f => { if(!f.type.startsWith('image/')) return toast('noImg','error'); const r = new FileReader(); r.onload = e => { const i = new Image(); i.onload = () => { stegoCoverImg = i; document.getElementById('encCoverImg').src = e.target.result; document.getElementById('encCoverPreviewBox').classList.add('active'); document.getElementById('encCoverName').textContent = f.name; AudioEngine.scan(); }; i.src = e.target.result; }; r.readAsDataURL(f); });
+  setupDropzone('encPayloadDropzone', 'encPayloadInput', f => { stegoPayloadFile = f; document.getElementById('encPayloadName').textContent = f.name; AudioEngine.scan(); });
+
+  function processImgCrypto(coverImg, payloadBytes, key) {
+    const enc = new Uint8Array(payloadBytes.length); for (let i = 0; i < payloadBytes.length; i++) enc[i] = payloadBytes[i] ^ key[i % key.length];
+    const cvs = document.getElementById('hiddenCanvas'); cvs.width = coverImg.width; cvs.height = coverImg.height;
+    const ctx = cvs.getContext('2d', { willReadFrequently: true }); ctx.drawImage(coverImg, 0, 0); const imgData = ctx.getImageData(0, 0, cvs.width, cvs.height); const data = imgData.data;
+    const totalBits = 32 + (enc.length * 8); if(totalBits > (data.length/4)*3) throw new Error("Payload Exceeds Capacity");
+    let bIdx = 0; const len = enc.length;
+    for (let i = 0; i < data.length && bIdx < totalBits; i++) {
+      if (i % 4 === 3) continue; 
+      let bit; if (bIdx < 32) bit = (len >> (31 - bIdx)) & 1; else bit = (enc[Math.floor((bIdx - 32) / 8)] >> (7 - ((bIdx - 32) % 8))) & 1;
+      data[i] = (data[i] & 0xFE) | bit; bIdx++;
+    } ctx.putImageData(imgData, 0, 0); return cvs;
+  }
+
+  document.getElementById('encryptBtn').addEventListener('click', async () => {
+    if(!stegoCoverImg) return toast('noImg', 'error');
+    const pwd = document.getElementById('encPassword').value, pKey = state.keys.enc;
+    if(!pwd && !pKey) return toast('noKey', 'error');
+    try {
+        let drv = null; if(stegoPayloadFile) drv = await uploadToDrive(stegoPayloadFile);
+        showOverlay('جاري ختم البيانات...', 'ENCRYPTING...');
+        const pObj = { t: document.getElementById('encMessage').value }; if(drv) pObj.f = { n: stegoPayloadFile.name, u: drv.dlLink, v: drv.viewLink, s: (stegoPayloadFile.size/1024/1024).toFixed(2) };
+        const pBytes = textEncoder.encode(JSON.stringify(pObj)); const uKey = await generateUltimateKey(pwd, pKey);
+        setTimeout(() => {
+            try {
+                state.modalDataBlob = processImgCrypto(stegoCoverImg, pBytes, uKey); state.modalAction = 'STEGO';
+                document.getElementById('dlFileName').value = "Stealth_Cover"; document.getElementById('dlFormatWrapper').style.display = 'block';
+                document.getElementById('modalOverlay').classList.add('active'); AudioEngine.success();
+            } catch(e) { toast(e.message, 'error', true); } finally { hideOverlay(); }
+        }, 500);
+    } catch (e) { toast('errUpload', 'error'); hideOverlay(); }
+  });
+
+  setupDropzone('decDropzone', 'decFileInput', f => { const r = new FileReader(); r.onload = e => { document.getElementById('decPreviewImg').src = e.target.result; document.getElementById('decPreviewBox').classList.add('active'); document.getElementById('decFileName').textContent = f.name; AudioEngine.scan(); }; r.readAsDataURL(f); });
+  
+  document.getElementById('decryptBtn').addEventListener('click', async () => {
+    const imgEl = document.getElementById('decPreviewImg'); if (!imgEl.src || imgEl.src.endsWith(window.location.pathname)) return toast('noImg', 'error');
+    const pwd = document.getElementById('decPassword').value, pKey = state.keys.dec; if (!pwd && !pKey) return toast('noKey', 'error');
+    showOverlay('جاري تحليل الصورة...', 'ANALYZING...'); const uKey = await generateUltimateKey(pwd, pKey);
+    setTimeout(() => {
+      try {
+        const cvs = document.getElementById('hiddenCanvas'); cvs.width = imgEl.naturalWidth; cvs.height = imgEl.naturalHeight; const ctx = cvs.getContext('2d', { willReadFrequently: true }); ctx.drawImage(imgEl, 0, 0); const data = ctx.getImageData(0,0,cvs.width,cvs.height).data;
+        let l32=0, b=0, i=0; while(b<32 && i<data.length){ if(i%4!==3){ l32=(l32<<1)|(data[i]&1); b++; } i++; }
+        if(l32<=0 || l32 > ((data.length/4)*3-32)/8) throw new Error("Corrupt Data");
+        const enc = new Uint8Array(l32); let bIdx=0, bitC=0, cB=0; while(bIdx<l32 && i<data.length){ if(i%4!==3){ cB=(cB<<1)|(data[i]&1); bitC++; if(bitC===8){ enc[bIdx++]=cB; bitC=0; cB=0; } } i++; }
+        const dec = new Uint8Array(l32); for (let j=0; j<l32; j++) dec[j] = enc[j] ^ uKey[j%uKey.length];
+        const payload = JSON.parse(textDecoder.decode(dec));
+        
+        const resBox = document.getElementById('decResult'), dlBox = document.getElementById('decFileBox'), dossierBtn = document.getElementById('dlDossierBtn'), dossierImg = document.getElementById('dossierPreviewImg'), burnBtn = document.getElementById('burnProtocolBtn');
+        document.getElementById('decryptResultsWrapper').classList.remove('burn-effect');
+        resBox.classList.add('empty'); resBox.textContent = state.lang==='ar' ? '_لا يوجد نص سري_' : '_NO_TEXT_'; dlBox.classList.remove('active'); dossierBtn.style.display='none'; dossierImg.classList.remove('active'); burnBtn.style.display='block';
+        if(payload.t) { resBox.classList.remove('empty'); resBox.textContent = payload.t; }
+        if(payload.f && payload.f.u) {
+            document.getElementById('decFileInfo').textContent = payload.f.n;
+            document.getElementById('decFileDlBtn').onclick = () => forceInvisibleDownload(payload.f.u); dlBox.classList.add('active');
+            dossierImg.src = generateDossier(payload.f.n, payload.f.s); dossierImg.classList.add('active');
+            dossierBtn.style.display='inline-block'; dossierBtn.onclick = () => { const a = document.createElement('a'); a.href = dossierImg.src; a.download = 'WANTED_DOSSIER.jpg'; a.click(); };
+        }
+        AudioEngine.success(); toast('success', 'success');
+      } catch(e) { AudioEngine.error(); toast('errDec', 'error'); } finally { hideOverlay(); }
+    }, 800);
+  });
+
+  document.getElementById('burnProtocolBtn').addEventListener('click', () => { triggerBurnProtocol('decryptResultsWrapper', 'decResult', 'decPreviewImg', ['burnProtocolBtn', 'dlDossierBtn'], ['decFileBox', 'dossierPreviewImg']); });
+
+  /* ============ SYS_02: AUDIO STEGANOGRAPHY (WAV LSB) ============ */
+  let audCoverBuffer = null, audEncFileName = 'output.wav', audPayloadFile = null;
+  setupDropzone('audCoverDropzone', 'audCoverInput', async f => { 
+      showOverlay('جاري تجهيز الترددات الصغرى...', 'INITIALIZING FREQUENCIES...');
+      try {
+          const arrBuf = await f.arrayBuffer(); 
+          const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          const audioBuf = await audioCtx.decodeAudioData(arrBuf);
+          const wavBlob = audioBufferToWav(audioBuf);
+          audCoverBuffer = await wavBlob.arrayBuffer();
+          document.getElementById('audCoverName').textContent = f.name + " ➔ WAV"; 
+          audEncFileName = f.name.split('.')[0] + '.wav'; 
+          AudioEngine.scan(); 
+      } catch(e) { toast('Error reading audio format', 'error', true); } finally { hideOverlay(); }
+  });
+  
+  setupDropzone('audPayloadDropzone', 'audPayloadInput', f => { audPayloadFile = f; document.getElementById('audPayloadName').textContent = f.name; AudioEngine.scan(); });
+  
+  function processWavStego(wavBuf, payloadBytes, key) {
+    const view = new DataView(wavBuf); const out = new Uint8Array(wavBuf);
+    let offset = 12; let dataOffset = -1; let dataSize = 0;
+    while(offset < view.byteLength) { const id = String.fromCharCode(view.getUint8(offset), view.getUint8(offset+1), view.getUint8(offset+2), view.getUint8(offset+3)); const sz = view.getUint32(offset+4, true); if(id === 'data') { dataOffset = offset + 8; dataSize = sz; break; } offset += 8 + sz; }
+    if(dataOffset === -1) throw new Error("Not a valid WAV (No data chunk)");
+    
+    const enc = new Uint8Array(payloadBytes.length); for(let i=0; i<payloadBytes.length; i++) enc[i] = payloadBytes[i] ^ key[i%key.length];
+    const totalBits = 32 + enc.length*8; if(totalBits > dataSize) throw new Error("Audio duration too short for payload");
+    
+    let wOff = dataOffset; const len = enc.length;
+    for(let i=0; i<32; i++) { out[wOff] = (out[wOff] & 0xFE) | ((len >> (31-i)) & 1); wOff++; }
+    for(let i=0; i<len; i++) { for(let b=7; b>=0; b--) { out[wOff] = (out[wOff] & 0xFE) | ((enc[i] >> b) & 1); wOff++; } }
+    return new Blob([out], {type: 'audio/wav'});
+  }
+
+  document.getElementById('audEncryptBtn').addEventListener('click', async () => {
+    if(!audCoverBuffer) return toast('noImg', 'error');
+    const pwd = document.getElementById('audEncPassword').value, pKey = state.keys.audEnc; if(!pwd && !pKey) return toast('noKey', 'error');
+    try {
+        let drv = null; if(audPayloadFile) drv = await uploadToDrive(audPayloadFile);
+        showOverlay('جاري الحقن الصوتي...', 'AUDIO INJECTION...');
+        const pObj = { t: document.getElementById('audMessage').value }; if(drv) pObj.f = { n: audPayloadFile.name, u: drv.dlLink, v: drv.viewLink, s: (audPayloadFile.size/1024/1024).toFixed(2) };
+        const pBytes = textEncoder.encode(JSON.stringify(pObj)); const uKey = await generateUltimateKey(pwd, pKey);
+        
+        setTimeout(() => {
+            try {
+                state.modalDataBlob = processWavStego(audCoverBuffer, pBytes, uKey); state.modalAction = 'FILE'; state.modalExt = '.wav';
+                document.getElementById('dlFileName').value = audEncFileName.replace('.wav','_SECURE'); document.getElementById('dlFormatWrapper').style.display = 'none';
+                document.getElementById('modalOverlay').classList.add('active'); AudioEngine.success();
+            } catch(e) { toast(e.message, 'error', true); } finally { hideOverlay(); }
+        }, 500);
+    } catch (e) { toast('errUpload', 'error'); hideOverlay(); }
+  });
+
+  let audDecBuffer = null;
+  setupDropzone('audDecDropzone', 'audDecInput', f => { const r = new FileReader(); r.onload = e => { audDecBuffer = e.target.result; document.getElementById('audDecName').textContent = f.name; AudioEngine.scan(); }; r.readAsArrayBuffer(f); });
+  
+  document.getElementById('audDecryptBtn').addEventListener('click', async () => {
+      if(!audDecBuffer) return toast('noImg', 'error'); const pwd = document.getElementById('audDecPassword').value, pKey = state.keys.audDec; if(!pwd && !pKey) return toast('noKey', 'error');
+      showOverlay('تحليل الترددات...', 'ANALYZING AUDIO...'); const uKey = await generateUltimateKey(pwd, pKey);
+      setTimeout(() => {
+          try {
+              const view = new DataView(audDecBuffer); const data = new Uint8Array(audDecBuffer);
+              let offset = 12, dataOff = -1, dataSz = 0;
+              while(offset < view.byteLength) { const id = String.fromCharCode(view.getUint8(offset), view.getUint8(offset+1), view.getUint8(offset+2), view.getUint8(offset+3)); const sz = view.getUint32(offset+4, true); if(id === 'data') { dataOff = offset + 8; dataSz = sz; break; } offset += 8 + sz; }
+              if(dataOff === -1) throw new Error("Invalid WAV");
+              let l32=0; for(let i=0; i<32; i++) l32 = (l32<<1)|(data[dataOff++]&1);
+              if(l32<=0 || l32 > dataSz/8) throw new Error("Corrupt Frame");
+              const enc = new Uint8Array(l32); for(let i=0; i<l32; i++) { let b=0; for(let j=0; j<8; j++) b=(b<<1)|(data[dataOff++]&1); enc[i]=b; }
+              const dec = new Uint8Array(l32); for(let i=0; i<l32; i++) dec[i] = enc[i] ^ uKey[i%uKey.length];
+              
+              const payload = JSON.parse(textDecoder.decode(dec));
+              
+              const resBox = document.getElementById('audDecResult'), dlBox = document.getElementById('audDecFileBox'), dossierBtn = document.getElementById('audDlDossierBtn'), dossierImg = document.getElementById('audDossierPreviewImg'), burnBtn = document.getElementById('audBurnProtocolBtn');
+              document.getElementById('audDecryptResultsWrapper').classList.remove('burn-effect');
+              resBox.classList.add('empty'); resBox.textContent = state.lang==='ar' ? '_لا يوجد نص سري_' : '_NO_TEXT_'; dlBox.classList.remove('active'); dossierBtn.style.display='none'; dossierImg.classList.remove('active'); burnBtn.style.display='block';
+              
+              if(payload.t) { resBox.classList.remove('empty'); resBox.textContent = payload.t; }
+              if(payload.f && payload.f.u) {
+                  document.getElementById('audDecFileInfo').textContent = payload.f.n;
+                  document.getElementById('audDecFileDlBtn').onclick = () => forceInvisibleDownload(payload.f.u); dlBox.classList.add('active');
+                  dossierImg.src = generateDossier(payload.f.n, payload.f.s); dossierImg.classList.add('active');
+                  dossierBtn.style.display='inline-block'; dossierBtn.onclick = () => { const a = document.createElement('a'); a.href = dossierImg.src; a.download = 'WANTED_DOSSIER.jpg'; a.click(); };
+              }
+              AudioEngine.success(); toast('success', 'success');
+          } catch(e) { AudioEngine.error(); toast('errDec', 'error'); } finally { hideOverlay(); }
+      }, 500);
+  });
+
+  document.getElementById('audBurnProtocolBtn').addEventListener('click', () => { triggerBurnProtocol('audDecryptResultsWrapper', 'audDecResult', null, ['audBurnProtocolBtn', 'audDlDossierBtn'], ['audDecFileBox', 'audDossierPreviewImg']); });
+
+  /* ============ SYS_03: RADIO MORSE TRANSMITTER ============ */
+  const enMorse = { 'A':'.-', 'B':'-...', 'C':'-.-.', 'D':'-..', 'E':'.', 'F':'..-.', 'G':'--.', 'H':'....', 'I':'..', 'J':'.---', 'K':'-.-', 'L':'.-..', 'M':'--', 'N':'-.', 'O':'---', 'P':'.--.', 'Q':'--.-', 'R':'.-.', 'S':'...', 'T':'-', 'U':'..-', 'V':'...-', 'W':'.--', 'X':'-..-', 'Y':'-.--', 'Z':'--..', '0':'-----', '1':'.----', '2':'..---', '3':'...--', '4':'....-', '5':'.....', '6':'-....', '7':'--...', '8':'---..', '9':'----.' };
+  const arMorse = { 'ا':'.-', 'أ':'.-', 'إ':'.-', 'آ':'.-', 'ب':'-...', 'ت':'-', 'ث':'-.-.', 'ج':'.---', 'ح':'....', 'خ':'---', 'د':'-..', 'ذ':'--..', 'ر':'.-.', 'ز':'---.', 'س':'...', 'ش':'----', 'ص':'-..-', 'ض':'...-', 'ط':'..-', 'ظ':'-.--', 'ع':'.-.-', 'غ':'--.', 'ف':'..-.', 'ق':'--.-', 'ك':'-.-', 'ل':'.-..', 'م':'--', 'ن':'-.', 'ه':'.', 'و':'.--', 'ي':'..', '0':'-----', '1':'.----', '2':'..---', '3':'...--', '4':'....-', '5':'.....', '6':'-....', '7':'--...', '8':'---..', '9':'----.' };
+  const revEn = Object.fromEntries(Object.entries(enMorse).map(([k,v]) => [v,k]));
+  const revAr = Object.fromEntries(Object.entries(arMorse).map(([k,v]) => [v,k]));
+  
+  let currentMorseStr = "";
+
+  document.getElementById('morseEncodeBtn').addEventListener('click', () => {
+      const input = document.getElementById('morseInput').value.toUpperCase();
+      const lang = document.getElementById('morseLangSelect').value;
+      const dict = lang === 'ar' ? arMorse : enMorse;
+      let out = []; for(let char of input) { if(dict[char]) out.push(dict[char]); else if (char === ' ') out.push('/'); }
+      currentMorseStr = out.join(' ');
+      document.getElementById('morseResult').classList.remove('empty'); document.getElementById('morseResult').textContent = currentMorseStr;
+      document.getElementById('morseAudioGroup').style.display = 'flex';
+      AudioEngine.beep();
+  });
+  
+  document.getElementById('morseDecodeBtn').addEventListener('click', () => {
+      const input = document.getElementById('morseInput').value.trim();
+      const lang = document.getElementById('morseLangSelect').value;
+      const revDict = lang === 'ar' ? revAr : revEn;
+      let out = []; const words = input.split('/');
+      for(let w of words) { const chars = w.trim().split(' '); for(let c of chars) { if(revDict[c]) out.push(revDict[c]); } out.push(' '); }
+      document.getElementById('morseResult').classList.remove('empty'); document.getElementById('morseResult').textContent = out.join('').trim();
+      document.getElementById('morseAudioGroup').style.display = 'none'; AudioEngine.beep();
+  });
+  
+  document.getElementById('morsePlayBtn').addEventListener('click', function() { AudioEngine.playMorse(currentMorseStr); });
+  
+  document.getElementById('morseExportBtn').addEventListener('click', async () => {
+      showOverlay('جاري التوليد...', 'GENERATING WAV...');
+      try {
+          const blob = await AudioEngine.exportMorseWAV(currentMorseStr);
+          state.modalAction = 'FILE'; state.modalDataBlob = blob; state.modalExt = '.wav';
+          document.getElementById('dlFileName').value = "MORSE_TRANSMISSION"; document.getElementById('dlFormatWrapper').style.display = 'none';
+          document.getElementById('modalOverlay').classList.add('active'); AudioEngine.success();
+      } catch(e) { toast('error', 'error'); } finally { hideOverlay(); }
+  });
+
+  setupDropzone('morseAudioDropzone', 'morseAudioInput', async f => {
+      document.getElementById('morseAudioName').textContent = f.name;
+      showOverlay('تحليل الذبذبات...', 'ANALYZING SIGNAL...');
+      try {
+          const arrBuf = await f.arrayBuffer();
+          const offlineCtx = new (window.OfflineAudioContext || window.webkitOfflineAudioContext)(1, 44100, 44100);
+          const audioBuf = await offlineCtx.decodeAudioData(arrBuf);
+          const data = audioBuf.getChannelData(0); const sampleRate = audioBuf.sampleRate;
+          
+          let events = [], isTone = false, stateStart = 0;
+          const windowSize = Math.floor(sampleRate * 0.01); 
+          for(let i=0; i<data.length; i+=windowSize) {
+              let sum = 0; for(let j=0; j<windowSize && i+j<data.length; j++) sum += Math.abs(data[i+j]);
+              const avg = sum / windowSize; const active = avg > 0.05;
+              if(active !== isTone) { if(i>0) events.push({type: isTone?'tone':'silence', duration: (i-stateStart)/sampleRate}); isTone = active; stateStart = i; }
+          }
+          if(data.length>0) events.push({type: isTone?'tone':'silence', duration: (data.length-stateStart)/sampleRate});
+          
+          const tones = events.filter(e => e.type === 'tone');
+          let dotLen = 0.08; 
+          if(tones.length > 0) dotLen = Math.min(...tones.map(t=>t.duration).filter(d=>d>0.02)) || 0.08;
+          
+          let decodedMorse = "";
+          for(let e of events) {
+              if(e.type === 'tone') { decodedMorse += (e.duration > dotLen * 2.2) ? "-" : "."; } 
+              else {
+                  if (e.duration > dotLen * 5) decodedMorse += " / ";
+                  else if (e.duration > dotLen * 2) decodedMorse += " ";
+              }
+          }
+          decodedMorse = decodedMorse.replace(/\s+/g, ' ').trim();
+          document.getElementById('morseInput').value = decodedMorse;
+          document.getElementById('morseDecodeBtn').click();
+          AudioEngine.success();
+      } catch(e) { AudioEngine.error(); toast('errDec', 'error'); } finally { hideOverlay(); }
+  });
+
+  /* ============ SYS_04: ABSOLUTE KILL MATRIX ============ */
+  let corrBuffer = null, corrName = '';
+  setupDropzone('corrDropzone', 'corrFileInput', f => { const r = new FileReader(); r.onload = e => { corrBuffer = e.target.result; corrName = f.name; document.getElementById('corrFileName').textContent = f.name; AudioEngine.heavyDrop(); }; r.readAsArrayBuffer(f); });
+
+  async function processMatrix(mode) {
+    if(!corrBuffer) { hideOverlay(); return toast('noFile', 'error'); }
+    const pwd = document.getElementById('corrPassword').value, pKey = state.keys.corr;
+    if(!pwd && !pKey) { hideOverlay(); return toast('noKey', 'error'); }
+
+    triggerDisplacementVFX(2500); 
+    
+    try {
+        const uKey = await generateUltimateKey(pwd, pKey);
+        const arr = new Uint8Array(corrBuffer); const out = new Uint8Array(arr.length);
+        const cSize = 256*1024;
+        
+        for (let i = 0; i < arr.length; i += cSize) {
+            const end = Math.min(i + cSize, arr.length);
+            for (let j = i; j < end; j++) { 
+                if (mode === 'destroy') { out[j] = Math.floor(Math.random() * 256); } 
+                else { out[j] = arr[j] ^ uKey[j % uKey.length]; }
+            }
+            await new Promise(r => setTimeout(r, 0)); // Non-blocking Yield
+        }
+
+        let outName = corrName; 
+        if(mode === 'corrupt' && !outName.endsWith('.corrupt')) outName += '.corrupt'; 
+        if((mode === 'restore' || mode === 'destroy') && outName.endsWith('.corrupt')) outName = outName.replace('.corrupt', '');
+        if(mode === 'destroy') outName = "DESTROYED_" + outName;
+
+        state.modalAction = 'FILE'; state.modalDataBlob = new Blob([out], { type: 'application/octet-stream' });
+        const nameParts = outName.split('.'); state.modalExt = nameParts.length > 1 ? '.' + nameParts.pop() : '';
+        document.getElementById('dlFileName').value = nameParts.join('.');
+        document.getElementById('dlFormatWrapper').style.display = 'none'; 
+        
+        hideOverlay(); document.getElementById('modalOverlay').classList.add('active');
+    } catch(e) { 
+        console.error(e);
+        toast('Error Processing Matrix', 'error', true); 
+        hideOverlay(); 
+    }
+  }
+
+  function triggerMatrix(mode) {
+      const msgAr = mode === 'destroy' ? 'جاري التدمير النهائي...' : (mode==='corrupt' ? 'جاري الإتلاف الجذري...' : 'جاري الاسترجاع...');
+      const msgEn = mode === 'destroy' ? 'ABSOLUTE WIPING...' : (mode==='corrupt' ? 'CORRUPTING...' : 'RESTORING...');
+      showOverlay(msgAr, msgEn);
+      setTimeout(() => processMatrix(mode), 100); // Wait for overlay to render before blocking
+  }
+
+  document.getElementById('corruptActionBtn').addEventListener('click', () => triggerMatrix('corrupt'));
+  document.getElementById('restoreActionBtn').addEventListener('click', () => triggerMatrix('restore'));
+  document.getElementById('destroyActionBtn').addEventListener('click', () => triggerMatrix('destroy'));
+
+  /* ============ UNIVERSAL MODAL EXPORT ============ */
+  document.getElementById('modalConfirmDlBtn').addEventListener('click', () => {
+    AudioEngine.beep(); const name = document.getElementById('dlFileName').value.trim() || 'STEALTH_ARTIFACT';
+    if (state.modalAction === 'STEGO') { 
+        const fmt = document.getElementById('dlFormat').value, ext = fmt.split('/')[1]; 
+        const a = document.createElement('a'); a.href = state.modalDataBlob.toDataURL(fmt, 1.0); a.download = name+'.'+ext; document.body.appendChild(a); a.click(); document.body.removeChild(a); 
+    } 
+    else if (state.modalAction === 'FILE') { 
+        const url = URL.createObjectURL(state.modalDataBlob); 
+        const a = document.createElement('a'); a.href = url; a.download = name+state.modalExt; document.body.appendChild(a); a.click(); document.body.removeChild(a); setTimeout(()=>URL.revokeObjectURL(url), 100); 
+    }
+    document.getElementById('modalOverlay').classList.remove('active'); toast('success', 'success');
+  });
+})();
+</script>
+</body>
+</html>
